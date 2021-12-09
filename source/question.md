@@ -13,6 +13,6 @@ Il se trouve que l'une d'entre elle m'est venu à l'esprit en écrivant.
 
 En effet, sans se prendre la tête en utilisant les nouvelles normes "async/await" apparues de la version ES7 de JavaScript, l'utilisation d'une "Promise" à l'air envisageable afin d'attendre une "promessse" retournée par l'animation avant d'exécuter la suite du code.
 
-Une autre approche est à prendre en compte, il s'agit de stocker les animations dans une liste. Ainsi, il serait donc possible de jouer les animations les une après les autres, selon l'ordre dans lequel elles ont été ajoutés à la liste.
+Une autre approche est à prendre en compte, il s'agit de stocker les animations dans une liste. Ainsi, il serait possible de jouer les animations les une après les autres, selon l'ordre dans lequel elles ont été ajoutés à la liste.
 
 Enfin, un mélange de ces deux solutions semblerait permettre de résoudre le problème aisément.

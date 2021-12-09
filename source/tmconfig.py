@@ -1,6 +1,6 @@
 class TMConfig:
 
-    title = u'Titre du TM'
+    title = u'Développement d’un outil informatique démontrant visuellement la perception d’une liste pour un ordinateur'
     first_name = 'Grégoire'
     last_name = 'Geinoz'
     author = f'{first_name} {last_name}'
