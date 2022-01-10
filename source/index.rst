@@ -11,7 +11,6 @@ Développement d’un outil informatique démontrant visuellement la perception 
     :caption: Table des matières
 
     introduction.md
-    question.md
     chapitre-01.md
     chapitre-02.md
     todo.rst
