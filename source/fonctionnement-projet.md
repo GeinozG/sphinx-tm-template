@@ -28,7 +28,7 @@ card.animation = {
 };
 ```
 
-Et qu'ainsi, dans la fonction "update" gérée par Phaser, une "boucle for" parcours toutes les cartes et effectue l'animation qui lui est attachée, si celle-ci est a animée :
+Et qu'ainsi, dans la fonction "update" gérée par Phaser, une "boucle for" parcours toutes les cartes et effectue l'animation qui lui est attachée, si celle-ci doit être animée :
 
 ``` js
 update()
