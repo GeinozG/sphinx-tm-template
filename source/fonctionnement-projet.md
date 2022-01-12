@@ -1,5 +1,5 @@
 # Fonctionnement du projet
-Le projet repose sur plusieurs grands aspects, qui permettent une répartition du code en plusieurs systèmes.
+Le projet repose sur plusieurs grands aspects, qui permettent une répartition du code en différents systèmes.
 
 ## L'utilisation de Phaser
 
@@ -18,7 +18,7 @@ Naïvement, on pourrait penser qu'il suffit que chaque carte possède un attribu
 ``` js
 animation = {};
 animation.toAnimate = true;
-animation.type = "move";
+animation.type = "movement";
 animation.x = ...;
 animation.y = ...;
 
@@ -30,6 +30,7 @@ Et qu'ainsi, dans la fonction "update" gérée par Phaser, une "boucle for" parc
 ``` js
 update()
 {
+    // Parcours toutes les cartes.
     for (let i = 0; i < nbCards; i++)
     {
         // Stocke la carte courante dans une variable.
@@ -43,6 +44,6 @@ update()
 }
 ```
 
-Or, cette manière de procéder comporte un gros désavantage. Elle permet au programme de
+Or, cette manière de procédé comporte un gros désavantage. En effet, elle ne laise au programme que la possibilité de gérer toutes les animations en même temps, ce qui signifie que si le développeur souhaite jouer des animations dans un certain ordre, il doit attendre que l'animation précédente soit terminer avant de configurer l'animation suivante dans une ou plusieurs cartes.
 
 ### Déplacements des cartes
