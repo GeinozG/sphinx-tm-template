@@ -28,7 +28,21 @@ card.animation = animation;
 Et qu'ainsi, dans la fonction "update" gérée par Phaser, une "boucle for" parcours toutes les cartes et effectue l'animation qui lui est attachée, si celle-ci est a animée :
 
 ``` js
-animation.toAnimate = true;
+update()
+{
+    for (let i = 0; i < nbCards; i++)
+    {
+        // Stocke la carte courante dans une variable.
+        const currentCard = lstCards[i];
+
+        if (currentCard.toAnimate)
+        {
+            // Gérer l'animation.
+        }
+    }
+}
 ```
+
+Or, cette manière de procéder comporte un gros désavantage. Elle permet au programme de
 
 ### Déplacements des cartes
