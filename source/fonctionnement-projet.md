@@ -71,4 +71,6 @@ function moveCard(targetCard)
 }
 ```
 
+
+
 ### Déplacements des cartes
