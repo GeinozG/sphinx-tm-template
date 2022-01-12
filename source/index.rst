@@ -15,18 +15,6 @@ Développement d’un outil informatique démontrant visuellement la perception 
     api.md
     scénarios-utilisation.md
     fonctionnement-projet.md
-    chapitre-01.md
-    chapitre-02.md
-    todo.rst
-
-..  toctree::
-    :maxdepth: 2
-    :caption: Tutoriel Sphinx
-
-    tutoriel-sphinx/index.rst
-
-
-
 
 Indices and tables
 ==================
