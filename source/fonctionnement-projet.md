@@ -70,7 +70,7 @@ function moveCard(targetCard, ...)
     }; 
     
     // La liste d'animations relative à la scène principale.
-    this.animationQueue.push(animation);
+    animationQueue.push(animation);
 }
 ```
 
@@ -121,7 +121,7 @@ update() // Exécutée 60 fois par seconde par Phaser.
 ---
 emphasize-lines: 25 - 36
 ---
-update()
+update() // Exécutée 60 fois par seconde par Phaser.
 {
     // Parcours les animations de la liste (animationQueue).
     for (let i = 0; i < animationQueue.length; i++)
@@ -162,10 +162,15 @@ update()
         if (currentAnimation.isFinished)
         {
             // Supprime l'élément courant de la liste.
-            this.animationQueue.splice(i, 1);
+            animationQueue.splice(i, 1);
         }
     }
 }
 ```
 
-### Déplacements des cartes
+Bien que l'emploie du "switch" soit pratique pour identifier le type d'animation, il ne peut pas être utiliser dans le cas présent car l'instruction ```break;``` du type "break" doit mettre fin à la "boucle for" et non à l'instruction "switch".
+
+### Déplacement des cartes
+
+
+### Retournement des cartes
