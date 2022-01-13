@@ -63,7 +63,10 @@ function moveCard(targetCard, ...)
         
         // Coordonnées où la carte doit se déplacer.
         x: ...,
-        y: ...
+        y: ...,
+
+        // Devient vrai quand l'animation est arrivée à son terme.
+        isFinished: false
     }; 
     
     // La liste d'animations relative à la scène principale.
@@ -74,7 +77,37 @@ function moveCard(targetCard, ...)
 De cette manière, la fonction "update", gérée par Phaser, peut accéder à la liste d'animations et les jouer dans l'ordre. Ainsi, une fois que la première animation de la liste est arrivée à son terme, il suffit de la supprimer et de traiter l'animation suivante.
 
 ``` js
-code qui montre ce qui vient d etre explique.
+update()
+{
+    // Si la liste d'animations n'est pas vide.
+    if (animationQueue.length > 0)
+    {
+        // Stocke la première animation de la liste.
+        const currentAnimation = animationQueue[0];
+
+        // Identifie la type de l'animation.
+        switch (currentAnimation.type)
+        {
+            // Type: Déplacement
+            case "movement":
+                ...
+                if (/* Animation termniée */)
+                {
+                    currentAnimation.isFinished = true;
+                }
+                break;
+            case ...:
+                ...
+                break;
+        }
+
+        if (currentAnimation.isFinished)
+        {
+            // Retire la première animation de la liste.
+            animationQueue.splice(i, 1);
+        }
+    }
+}
 ```
 
  Cependant, comme chaque objet "animation" décrit le comportement d'une unique carte, il n'est donc pas possible d'exécuter plusieurs animations simultanément. Pour contourner ce problème, le système est programmé pour jouer toutes les animations à la suite qui ne sont pas interrompues par un objet "animation" de type "break" ("pause" ou "rupture" en anglais). Lorsque ce type est rencontré, le système s'assure que toutes les animations précédentes soient terminées avant de jouer le bloque d'animations suivant :
