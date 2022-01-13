@@ -13,7 +13,7 @@ Le projet repose sur plusieurs grands aspects, qui permettent une répartition d
 Le système d'animation permet au développeur de créer des schémas d'animation. C'est à dire que, par exemple, le développeur peut aisément créer une animation qui engendre le déplacement simultané ou séquentiel d'une ou plusieurs cartes.
 
 ### Principe fondamental
-Naïvement, on pourrait penser qu'il suffit que chaque carte possède un attribut "animation" qui possède les informations nécessaire à décrire une animation, par exemple, de déplacement :
+Naïvement, on pourrait penser qu'il suffit que chaque carte possède un attribut "animation" qui contient les informations nécessaires à décrire une animation, par exemple, de déplacement :
 
 ``` js
 const card = {...};
@@ -52,7 +52,7 @@ Or, cette manière de procédé comporte un gros désavantage. En effet, elle ne
 C'est pour cela qu'un véritable système d'animation est nécessaire. Concrètement, la scène principale possède un attribut "animationQueue". Il s'agit d'une liste initialement vide, qui stocke les animations les unes à la suite des autres. Ce principe simple permet de conserver l'ordre dans lequel les animations doivent être jouées ; selon l'ordre d'apparition dans la liste. Ce procédé nécessite donc également la création d'un objet "animation", qui sera l'objet stocké dans la liste animationQueue :
 
 ``` js
-function moveCard(targetCard)
+function moveCard(targetCard, ...)
 {
     const animation = {
         // Type de l'animation.
@@ -71,6 +71,15 @@ function moveCard(targetCard)
 }
 ```
 
+De cette manière, la fonction "update", gérée par Phaser, peut accéder à la liste d'animations et les jouer dans l'ordre. Ainsi, une fois que la première animation de la liste est arrivée à son terme, il suffit de la supprimer et de traiter l'animation suivante.
 
+``` js
+code qui montre ce qui vient d etre explique.
+```
+
+ Cependant, comme chaque objet "animation" décrit le comportement d'une unique carte, il n'est donc pas possible d'exécuter plusieurs animations simultanément. Pour contourner ce problème, le système est programmé pour jouer toutes les animations à la suite qui ne sont pas interrompues par un objet "animation" de type "break" ("pause" ou "rupture" en anglais). Lorsque ce type est rencontré, le système s'assure que toutes les animations précédentes soient terminées avant de jouer le bloque d'animations suivant :
+
+ ``` js
+ ```
 
 ### Déplacements des cartes
