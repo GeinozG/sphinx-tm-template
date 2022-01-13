@@ -31,7 +31,7 @@ card.animation = {
 Et qu'ainsi, dans la fonction "update" gérée par Phaser, une "boucle for" parcours toutes les cartes et effectue l'animation qui lui est attachée, si celle-ci doit être animée :
 
 ``` js
-update()
+update() // Exécutée 60 fois par seconde par Phaser.
 {
     // Parcours toutes les cartes.
     for (let i = 0; i < nbCards; i++)
@@ -74,10 +74,10 @@ function moveCard(targetCard, ...)
 }
 ```
 
-De cette manière, la fonction "update", gérée par Phaser, peut accéder à la liste d'animations et les jouer dans l'ordre. Ainsi, une fois que la première animation de la liste est arrivée à son terme, il suffit de la supprimer et de traiter l'animation suivante.
+De cette manière, la fonction "update", gérée par Phaser, peut accéder à la liste d'animations et les jouer dans l'ordre. Ainsi, une fois que la première animation de la liste est arrivée à son terme, il suffit de la supprimer pour pouvoir traiter l'animation suivante.
 
 ``` js
-update()
+update() // Exécutée 60 fois par seconde par Phaser.
 {
     // Si la liste d'animations n'est pas vide.
     if (animationQueue.length > 0)
@@ -90,29 +90,82 @@ update()
         {
             // Type: Déplacement
             case "movement":
-                ...
-                if (/* Animation termniée */)
+                // Récupère la référence de la carte concérnée par l'animation.
+                const card = currentAnimation.card;
+                
+                // Exécution de l'animation...
+                // ...
+                // ...
+
+                if (/* Animation terminée */)
                 {
                     currentAnimation.isFinished = true;
                 }
                 break;
-            case ...:
-                ...
-                break;
+            // ...
         }
 
+        // Si l'animation courante est terminée.
         if (currentAnimation.isFinished)
         {
             // Retire la première animation de la liste.
-            animationQueue.splice(i, 1);
+            animationQueue.shift();
         }
     }
 }
 ```
 
- Cependant, comme chaque objet "animation" décrit le comportement d'une unique carte, il n'est donc pas possible d'exécuter plusieurs animations simultanément. Pour contourner ce problème, le système est programmé pour jouer toutes les animations à la suite qui ne sont pas interrompues par un objet "animation" de type "break" ("pause" ou "rupture" en anglais). Lorsque ce type est rencontré, le système s'assure que toutes les animations précédentes soient terminées avant de jouer le bloque d'animations suivant :
+ Cependant, comme chaque objet "animation" décrit le comportement d'une unique carte, il n'est pas possible d'exécuter plusieurs animations simultanément. Pour contourner ce problème, le système est programmé pour jouer toutes les animations à la suite qui ne sont pas interrompues par un objet "animation" de type "break" ("pause" ou "rupture" en anglais). Lorsque ce type est rencontré, le système s'assure que toutes les animations précédentes soient terminées avant de jouer le bloque d'animations suivant :
 
- ``` js
- ```
+```{code-block} js
+---
+emphasize-lines: 25 - 36
+---
+update()
+{
+    // Parcours les animations de la liste (animationQueue).
+    for (let i = 0; i < animationQueue.length; i++)
+    {
+        // Stocke l'animation courante de la liste.
+        const currentAnimation = animationQueue[i];
+        
+        // Identifie le type de l'animation.
+        if (currentAnimation.type == "movement")
+        {
+            // Récupère la référence de la carte concérnée par l'animation.
+            const card = currentAnimation.card;
+                            
+            // Exécution de l'animation...
+            // ...
+            // ...
+
+            if (/* Animation terminée */)
+            {
+                currentAnimation.isFinished = true;
+            }
+        }
+        // ...
+        else if (currentAnimation.type == "break")
+        {
+            // Si le type break est le premier élément de la liste.
+            if (i == 0)
+            {
+                // Retire le premier élément de la liste.
+                animationQueue.shift();
+            }
+
+            // Met fin à l'exécution de la boucle for.
+            break;
+        }
+
+        // Si l'animation courante est terminée.
+        if (currentAnimation.isFinished)
+        {
+            // Supprime l'élément courant de la liste.
+            this.animationQueue.splice(i, 1);
+        }
+    }
+}
+```
 
 ### Déplacements des cartes
