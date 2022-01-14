@@ -13,7 +13,7 @@ Le projet repose sur plusieurs grands aspects, qui permettent une répartition d
 Le système d'animation permet au développeur de créer des schémas d'animation. C'est à dire que, par exemple, le développeur peut aisément créer une animation qui engendre le déplacement simultané ou séquentiel d'une ou plusieurs cartes.
 
 ### Principe fondamental
-Naïvement, on pourrait penser qu'il suffit que chaque carte possède un attribut "animation" qui contient les informations nécessaires à décrire une animation, par exemple, de déplacement :
+Naïvement, on pourrait penser qu'il suffit que chaque carte possède une propriété "animation" qui contient les informations nécessaires à décrire une animation, par exemple, de déplacement :
 
 ``` js
 const card = {...};
@@ -47,9 +47,9 @@ update() // Exécutée 60 fois par seconde par Phaser.
 }
 ```
 
-Or, cette manière de procédé comporte un gros désavantage. En effet, elle ne laisse au programme que la possibilité de gérer toutes les animations en même temps, ce qui signifie que si le développeur souhaite jouer des animations dans un certain ordre, il doit attendre que l'animation précédente soit terminer avant de configurer l'animation suivante dans une ou plusieurs cartes. Ce n'est pas viable pour gérer une quantité importante d'animations qui s'exécutent à la suite.
+Or, cette manière de procédé comporte un gros désavantage. En effet, elle ne laisse au programme que la possibilité de gérer toutes les animations en même temps, ce qui signifie que si le développeur souhaite en jouer dans un certain ordre, il doit attendre que l'animation précédente soit terminer avant de configurer la suivante dans une ou plusieurs cartes. Ce n'est pas viable pour gérer une quantité importante d'animations qui s'exécutent à la suite.
 
-C'est pour cela qu'un véritable système d'animation est nécessaire. Concrètement, la scène principale possède un attribut "animationQueue". Il s'agit d'une liste initialement vide, qui stocke les animations les unes à la suite des autres. Ce principe simple permet de conserver l'ordre dans lequel les animations doivent être jouées ; selon l'ordre d'apparition dans la liste. Ce procédé nécessite donc également la création d'un objet "animation", qui sera l'objet stocké dans la liste animationQueue :
+C'est pour cela qu'un véritable système d'animation est nécessaire. Concrètement, la scène principale possède une propriété "animationQueue". Il s'agit d'une liste initialement vide, qui stocke les animations les unes à la suite des autres. Ce principe simple permet de conserver l'ordre dans lequel les animations doivent être jouées ; selon l'ordre d'apparition dans la liste. Ce procédé nécessite donc également la création d'un objet "animation", qui sera l'objet stocké dans la liste animationQueue :
 
 ``` js
 function moveCard(targetCard, ...)
@@ -74,7 +74,7 @@ function moveCard(targetCard, ...)
 }
 ```
 
-De cette manière, la fonction "update", gérée par Phaser, peut accéder à la liste d'animations et les jouer dans l'ordre. Ainsi, une fois que la première animation de la liste est arrivée à son terme, il suffit de la supprimer pour pouvoir traiter l'animation suivante.
+De cette manière, la fonction "update", gérée par Phaser, peut accéder à la liste d'animations et les jouer dans l'ordre. Ainsi, une fois que la première animation de la liste est arrivée à son terme, il suffit de la supprimer pour pouvoir traiter la suivante.
 
 ``` js
 update() // Exécutée 60 fois par seconde par Phaser.
@@ -235,6 +235,32 @@ const animation = {
                                (animation.x - card.futureX));
 ```
 
-Comme l'angle de la direction dans laquelle la carte doit se déplacer n'est calculé qu'une seul fois au moment de la création de l'animation, la fonction "update" de Phaser n'a plus qu'à actualiser les coordonnées de la carte en fonction de l'angle. Les fonctions trigonométriques Sinus/Cosinus permettent d'obtenir
+Comme l'angle de la direction dans laquelle la carte doit se déplacer n'est calculé qu'une seul fois au moment de la création de l'animation, la fonction "update" de Phaser n'a plus qu'à actualiser les coordonnées de la carte en tenant compte de l'angle. Les fonctions trigonométriques Sinus/Cosinus de l'angle permettent d'obtenir le décalage horizontal et vertical approprié :
+
+```{code-block} js
+---
+emphasize-lines: 16 - 17
+---
+update() // Exécutée 60 fois par seconde par Phaser.
+{
+    // Parcours les animations de la liste (animationQueue).
+    for (let i = 0; i < this.animationQueue.length; i++)
+    {
+        // Stocke l'animation courante de la liste.
+        const currentAnimation = this.animationQueue[i];
+
+        // Identifie le type de l'animation.
+        if (currentAnimation.type == "movement")
+        {
+            // Récupère la référence de la carte concérnée par l'animation.
+            const card = currentAnimation.card;
+
+            // Déplacement de la carte.
+            card.x += Math.cos(currentAnimation.directionAngle);
+            card.y += Math.sin(currentAnimation.directionAngle);
+        }
+    }
+}
+```
 
 ### Retournement des cartes
