@@ -211,12 +211,16 @@ const animation = {
 };
 ```
 
-Pour obtenir l'angle de la direction, il suffit de calculer l'arc tangente du quotient de la différence d'ordonné sur la différence d'abscisse entre le point d'arrivé et de départ :
+Pour obtenir l'angle de la direction, il suffit de calculer l'arc tangente du quotient de la différence d'ordonné sur la différence d'abscisse entre le point de départ et de d'arrivé :
 
 ``` {math}
 \arctan{(\frac{\Delta y}{\Delta x})}
 ```
 
+Javascript possède nativement un objet "Math" qui contient une fonction "atan2(y, x)" qui prend en paramètres les coordonnées "x" et "y" du point d'arrivé relativement au point de départ (0; 0) et retourne l'arc tangente formé par le quotient de "y" sur "x". L'avantage de cette fonction est qu'elle gère elle-même les cas où "x" ou "y" serait égal à 0 :
 
+``` js
+
+```
 
 ### Retournement des cartes
