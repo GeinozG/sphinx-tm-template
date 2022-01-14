@@ -214,13 +214,27 @@ const animation = {
 Pour obtenir l'angle de la direction, il suffit de calculer l'arc tangente du quotient de la différence d'ordonné sur la différence d'abscisse entre le point de départ et de d'arrivé :
 
 ``` {math}
-\arctan{(\frac{\Delta y}{\Delta x})}
+\alpha = \arctan{(\frac{\Delta y}{\Delta x})}
 ```
 
 Javascript possède nativement un objet "Math" qui contient une fonction "atan2(y, x)" qui prend en paramètres les coordonnées "x" et "y" du point d'arrivé relativement au point de départ (0; 0) et retourne l'arc tangente formé par le quotient de "y" sur "x". L'avantage de cette fonction est qu'elle gère elle-même les cas où "x" ou "y" serait égal à 0 :
 
-``` js
+```{code-block} js
+---
+emphasize-lines: 9 - 10
+---
+const animation = {
+    // Type de l'animation.
+    type: "movement",
+    
+    // Autres propriétés de l'animation.
+    // ...
 
+    // Angle entre le point de départ et d'arrivé.
+    directionAngle: Math.atan2((animation.y - card.futureY),
+                               (animation.x - card.futureX));
 ```
+
+Comme l'angle de la direction dans laquelle la carte doit se déplacer n'est calculé qu'une seul fois au moment de la création de l'animation, la fonction "update" de Phaser n'a plus qu'à actualiser les coordonnées de la carte en fonction de l'angle. Les fonctions trigonométriques Sinus/Cosinus permettent d'obtenir
 
 ### Retournement des cartes
