@@ -194,8 +194,29 @@ Le framework Phaser permet de déplacer ses objets par un procédé qui s'appell
     });
 ```
 
-Cependant, ce principe ne respecte pas le fondement du système d'animation développé précédement, qui consiste a stocké dans une liste toutes les animations créées, afin de pouvoir les jouer dans un ordre défini, simultanément ou non. En effet, le tweening proposé par Phaser déclenche une animation au moment-même où le tweening est créé, ou éventuellement avec un délai mesuré en microsecondes. De plus, le système de "callback" (appel d'une fonction à la fin de l'animation) rajoute une complexité supplémentaire dans la gestion des animations.
+Cependant, ce principe ne respecte pas le fondement du système d'animation développé précédement, qui consiste a stocké dans une liste toutes les animations créées, afin de pouvoir les jouer dans un ordre défini, simultanément ou non. En effet, le tweening proposé par Phaser déclenche une animation au moment-même où le tweening est créé, ou éventuellement avec un délai mesuré en microsecondes. De plus, le système de "callback" (appel d'une fonction à la fin de l'animation) rajoute une complexité supplémentaire dans la gestion des animations. Par conséquent, il est préférable que les déplacements des cartes ne relèvent pas de la responsabilité de Phaser.
 
-C'est pour cela
+Il est donc nécessaire que le programme gère ce type d'animation lui-même. Pour cela, l'objet "animation" de type "movement" doit faire appel à des notions de trigonométrie élémentaire afin de calculer l'angle en radian entre le point de départ et le point d'arrivé du déplacement :
+
+``` js
+const animation = {
+    // Type de l'animation.
+    type: "movement",
+    
+    // Autres propriétés de l'animation.
+    // ...
+
+    // Angle entre le point de départ et d'arrivé.
+    directionAngle: /* Angle en radian */
+};
+```
+
+Pour obtenir l'angle de la direction, il suffit de calculer l'arc tangente du quotient de la différence d'ordonné sur la différence d'abscisse entre le point d'arrivé et de départ :
+
+``` {math}
+\arctan{(\frac{\Delta y}{\Delta x})}
+```
+
+
 
 ### Retournement des cartes
