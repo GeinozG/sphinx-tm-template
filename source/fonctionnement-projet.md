@@ -264,3 +264,4 @@ update() // Exécutée 60 fois par seconde par Phaser.
 ```
 
 ### Retournement des cartes
+L'animation du retournement des cartes est gérée par Phaser.
