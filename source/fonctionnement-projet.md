@@ -171,6 +171,31 @@ update() // Exécutée 60 fois par seconde par Phaser.
 Bien que l'emploie du "switch" soit pratique pour identifier le type d'animation, il ne peut pas être utiliser dans le cas présent car l'instruction ```break;``` du type "break" doit mettre fin à la "boucle for" et non à l'instruction "switch".
 
 ### Déplacement des cartes
+Le framework Phaser permet de déplacer ses objets par un procédé qui s'appelle le "tweening". Ce procédé permet en effet de déplacer un objet d'un point A à un point B automatiquement et fluidement. Appliquer du tweening sur une carte exécute un code asynchrone modifiant les propriétés "x" et "y" de la carte concérnée afin de la faire se diriger vers le point souhaité :
 
+``` js
+    // "this" fait référence à la scène de Phaser.
+    this.tweens.add({
+        // Objet concerné par l'animation.
+        targets: image,
+
+        // Coordonnées de la destination.
+        x: ...,
+        y: ...,
+
+        // Durée de l'animation.
+        duration: ...,
+
+        // Type d'accélération.
+        ease: 'Power1',
+
+        // Fonction appelé à la fin de l'animation
+        onComplete: function() {...}
+    });
+```
+
+Cependant, ce principe ne respecte pas le fondement du système d'animation développé précédement, qui consiste a stocké dans une liste toutes les animations créées, afin de pouvoir les jouer dans un ordre défini, simultanément ou non. En effet, le tweening proposé par Phaser déclenche une animation au moment-même où le tweening est créé, ou éventuellement avec un délai mesuré en microsecondes. De plus, le système de "callback" (appel d'une fonction à la fin de l'animation) rajoute une complexité supplémentaire dans la gestion des animations.
+
+C'est pour cela
 
 ### Retournement des cartes
