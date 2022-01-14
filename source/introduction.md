@@ -18,7 +18,7 @@ Le projet repose sur 2 technologies principales : Javascript et HTML5. Cependant
 ## Configuration matérielle requise pour utiliser l'outil
 Afin que l'utilisation de l'outil soit la plus accessible possible, les langages de programmation du Web ont été utilisé pour le développer. Ce qui signifie que pour utiliser l'outil, seul un accès à un ordinateur opérationnel étant doté d'un navigateur internet, et d'une connexion, suffit.
 
-## Connaissance requises pour utiliser l'outil
+## Connaissances requises pour utiliser l'outil
 L'outil fait appel aux notions de variables ; éléments qui constituent la liste, ainsi qu'aux opérations de bases entre variables numérique (calculs, affectations de valeurs) et la notion de condition entre les variables utilisant des opérateurs de conditions.
 
 ## Connaissances requises pour comprendre le fonctionnement de l'outil
