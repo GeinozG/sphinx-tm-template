@@ -264,10 +264,11 @@ update() // Exécutée 60 fois par seconde par Phaser.
 ```
 
 ### Retournement des cartes
-Le retournement des cartes est gérée par Phaser. Chaque carte est une instance de la classe "Image" proposé par Phaser. Cette classe a une propriété "scaleX" et "scaleY" qui représentent respectivement l'étirement horizontal et vertical de l'image. Ainsi, modifier l'une ou l'autre de ces valeurs, modifie le rendu visuel de la carte en question. La valeur par défaut de ces propriétés est de 1, signifiant un étirement d'échelle 1:1 ; plus la valeur est grande, plus l'image est étirée sur l'axe correspondant :
+Le retournement des cartes permet de montrer ou cacher à l'utilisateur le valeur d'une carte. Grâce à Phaser, ceci peut être géré aisément. En effet, chaque carte est une instance de la classe "Image" proposé par Phaser. Cette classe a une propriété "scaleX" et "scaleY" qui représentent respectivement l'étirement horizontal et vertical de l'image. Ainsi, modifier l'une ou l'autre de ces valeurs, modifie le rendu visuel de la carte en question. La valeur par défaut de ces propriétés est de 1, signifiant un étirement d'échelle 1:1 ; plus la valeur est grande, plus l'image est étirée sur l'axe correspondant :
 
 ```{figure} images/scale.PNG
 ---
 ---
 ```
 
+Avec cette fonctionnalité, il suffit de rétrécir totalement la carte horizontalement et de l'étirer à nouveau jusqu'à sa taille originelle pour donner l'impression d'un retournement.

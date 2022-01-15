@@ -15,9 +15,3 @@ Développement d’un outil informatique démontrant visuellement la perception 
     api.md
     scénarios-utilisation.md
     fonctionnement-projet.md
-
-Indices and tables
-==================
-
-* :ref:`genindex`
-* :ref:`search`
