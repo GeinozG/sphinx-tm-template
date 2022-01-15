@@ -9,7 +9,7 @@ Phaser se décrit comme un framework de création de jeux vidéos. Il
 ### Système d'évènements
 
 ### Gestion de la scène et de la boucle principale
-L'un des plus gros avantage qu'offre Phaser est qu'il prend en charge
+L'un des plus gros avantage qu'offre Phaser est qu'il repose sur un système de scènes, qui possèdent des méthodes spécifiques permettant par exemple de pré-charger des images par la méthode "preload()" ou une méthode "update()" appelée plusieurs fois par seconde permettant d'actualiser des valeurs (pour la gestion des animations par exemple).
 
 ## Système d'animation
 Le système d'animation permet au développeur de créer des schémas d'animation. C'est à dire que, par exemple, le développeur peut aisément créer une animation qui engendre le déplacement simultané ou séquentiel d'une ou plusieurs cartes.
