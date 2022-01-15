@@ -268,7 +268,6 @@ Le retournement des cartes est gérée par Phaser. Chaque carte est une instance
 
 ```{figure} images/scale.PNG
 ---
-width: 100%
 ---
 ```
 
