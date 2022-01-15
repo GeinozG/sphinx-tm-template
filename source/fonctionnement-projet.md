@@ -4,8 +4,6 @@ Le projet repose sur plusieurs grands aspects, qui permettent une répartition d
 ## L'utilisation de Phaser
 Phaser se décrit comme un framework de création de jeux vidéos. Il 
 
-### Système d'évènements
-
 ### Système de scènes
 L'un des plus gros avantage qu'offre Phaser est qu'il repose sur un système de scènes, qui possèdent des méthodes spécifiques permettant par exemple de pré-charger des images par la méthode "preload()" ou une méthode "update()" appelée plusieurs fois par seconde permettant d'actualiser des valeurs (très utile pour le système d'animations).
 
@@ -68,7 +66,37 @@ const game = new Phaser.Game(config);
 ```
 
 ### Système de gestion des cartes
-Les scènes de Phaser 
+Les scènes de Phaser permettent la création d'objets divers, comme des images, du texte, etc... qui seront affichés à l'écran. Les cartes et les variables sont en fait des objets images dont les coordonnées varient afin de les faire se déplacer :
+
+``` js
+class MainScene extends Phaser.Scene
+{
+    preload()
+    {
+        // Charge l'image des cartes en mémoire.
+        this.load.image("card", "images/card.png");
+    }
+
+    create()
+    {
+        // Crée une carte aux coordonnées (0; 0)
+        // ayant comme image : "card".
+        const card = this.add.image(0, 0, "card");
+    }
+}
+```
+
+### Système d'évènements
+Le système d'évènements de Phaser joue un rôle crucial dans le projet. En effet, il permet la communication entre l'API et le programme en lui-même. Pour ce faire, il est nécessaire d'instancier un objet "EventEmitter", proposer par Phaser. Cet objet permet d'émettre des événements et de les recevoir. C'est à dire qu'il est possible d'établir une connexion entre deux fichiers ou parties de code différentes en émettant un événement contenant des paramètres qui seront transmis à une autre partie du code qui appellera une fonction en y passant les paramètres spécifiés lors de l'envoi de l'événement. Cela revient en résumé à appeler une fonction qui est sensée être hors de portée :
+
+```{figure} images/event.PNG
+---
+---
+
+Fonctionnement du système d'événement de Phaser.
+```
+
+
 
 ## Système d'animations
 Le système d'animation permet au développeur de créer des schémas d'animation. C'est à dire que, par exemple, le développeur peut aisément créer une animation qui engendre le déplacement simultané ou séquentiel d'une ou plusieurs cartes.
