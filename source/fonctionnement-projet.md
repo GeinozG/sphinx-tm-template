@@ -9,9 +9,41 @@ Phaser se décrit comme un framework de création de jeux vidéos. Il
 ### Système de scènes
 L'un des plus gros avantage qu'offre Phaser est qu'il repose sur un système de scènes, qui possèdent des méthodes spécifiques permettant par exemple de pré-charger des images par la méthode "preload()" ou une méthode "update()" appelée plusieurs fois par seconde permettant d'actualiser des valeurs (très utile pour le système d'animations).
 
-Afin de définir une scène, il faut créer une classe héritant de la scène de Phaser et de 
+Afin de définir une scène, il faut créer une classe héritant de la scène de Phaser et d'implémenter ses méthodes :
 
-Il suffit simplement de créer une variable de configuration afin de définir la taille du "canvas" utilisé pour dessiner les images, le nombre d'actualisation par seconde de la fonction "update()" ainsi que le nom de la classe de la scène principale :
+``` js
+class MainScene extends Phaser.Scene
+{
+    // Appelée lors de l'instanciation de la scène.
+    constructor()
+    {
+        super("MainScene");
+    }
+    
+    // Méthodes native aux scènes de Phaser :
+    
+    // Principalement pour charger les images.
+    preload()
+    {
+
+    }
+
+    // Principalement pour créer des objets de Phaser.
+    create()
+    {
+
+    }
+
+    // Appelée à interval régulier
+    // pour actualiser des valeurs.
+    update()
+    {
+
+    }
+}
+```
+
+Pour instancier la scène, il suffit simplement de créer une variable de configuration afin de définir la taille du "canvas" utilisé pour dessiner les images, le nombre d'actualisation par seconde de la fonction "update()" ainsi que le nom de la classe de la scène principale, et d'instancier une classe "Phaser.Game" :
 
 ``` js
 const config = {
@@ -36,7 +68,7 @@ const game = new Phaser.Game(config);
 ```
 
 ### Système de gestion des cartes
-Les scène de Phaser 
+Les scènes de Phaser 
 
 ## Système d'animations
 Le système d'animation permet au développeur de créer des schémas d'animation. C'est à dire que, par exemple, le développeur peut aisément créer une animation qui engendre le déplacement simultané ou séquentiel d'une ou plusieurs cartes.
