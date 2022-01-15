@@ -23,20 +23,20 @@ class MainScene extends Phaser.Scene
     // Principalement pour charger les images.
     preload()
     {
-
+        // ...
     }
 
     // Principalement pour créer des objets de Phaser.
     create()
     {
-
+        // ...
     }
 
     // Appelée à interval régulier
     // pour actualiser des valeurs.
     update()
     {
-
+        // ...
     }
 }
 ```
@@ -96,7 +96,19 @@ Le système d'évènements de Phaser joue un rôle crucial dans le projet. En ef
 Fonctionnement du système d'événement de Phaser.
 ```
 
+Concrètement, le code se construit de la manière suivante :
 
+Avant tout, il faut instancier l'objet "EventEmitter" :
+
+``` js
+const eventEmitter = new Phaser.Events.EventEmitter();
+```
+
+Ensuite, dans le code de l'API, c'est là où il faut émettre les événements :
+
+``` js
+
+```
 
 ## Système d'animations
 Le système d'animation permet au développeur de créer des schémas d'animation. C'est à dire que, par exemple, le développeur peut aisément créer une animation qui engendre le déplacement simultané ou séquentiel d'une ou plusieurs cartes.
