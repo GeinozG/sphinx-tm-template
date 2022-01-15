@@ -264,4 +264,5 @@ update() // Exécutée 60 fois par seconde par Phaser.
 ```
 
 ### Retournement des cartes
-L'animation du retournement des cartes est gérée par Phaser.
+Le retournement des cartes est gérée par Phaser. Chaque carte est une instance de la classe "Image" proposé par Phaser. Cette classe a une propriété "scaleX" et "scaleY" qui représentent respectivement l'étirement horizontal et vertical de l'image. Ainsi, modifier l'une ou l'autre de ces valeurs, modifie le rendu visuel de la carte en question. La valeur par défaut de ces propriétés est de 1, signifiant un étirement d'échelle 1:1 ; plus la valeur est grande, plus l'image est étirée sur l'axe correspondant :
+
