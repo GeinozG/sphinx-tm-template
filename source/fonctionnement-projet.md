@@ -8,8 +8,30 @@ Phaser se décrit comme un framework de création de jeux vidéos. Il
 
 ### Système d'évènements
 
-### Gestion de la scène et de la boucle principale
+### Système de scènes
 L'un des plus gros avantage qu'offre Phaser est qu'il repose sur un système de scènes, qui possèdent des méthodes spécifiques permettant par exemple de pré-charger des images par la méthode "preload()" ou une méthode "update()" appelée plusieurs fois par seconde permettant d'actualiser des valeurs (pour la gestion des animations par exemple).
+
+Il suffit simplement de créer une variable de configuration afin de définir la taille du "canvas" utilisé pour dessiner les images, le nombre d'actualisation par seconde de la fonction "update()" ainsi que le nom de la classe de la scène principale :
+
+``` js
+const config = {
+    // taille du canvas.
+    width: 1000,
+    height: 600,
+
+    // Nombre d'actualisation par seconde.
+    fps: {
+        target: 60,
+        forceSetTimeOut: true
+    },
+
+    // Scène principale.
+    scene: [MainScene]
+};
+
+// Création du jeu avec les configurations.
+const game = new Phaser.Game(config);
+```
 
 ## Système d'animation
 Le système d'animation permet au développeur de créer des schémas d'animation. C'est à dire que, par exemple, le développeur peut aisément créer une animation qui engendre le déplacement simultané ou séquentiel d'une ou plusieurs cartes.
