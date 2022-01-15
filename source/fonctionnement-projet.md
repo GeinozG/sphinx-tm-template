@@ -4,12 +4,12 @@ Le projet repose sur plusieurs grands aspects, qui permettent une répartition d
 ## L'utilisation de Phaser
 Phaser se décrit comme un framework de création de jeux vidéos. Il 
 
-### Système de gestion des cartes
-
 ### Système d'évènements
 
 ### Système de scènes
-L'un des plus gros avantage qu'offre Phaser est qu'il repose sur un système de scènes, qui possèdent des méthodes spécifiques permettant par exemple de pré-charger des images par la méthode "preload()" ou une méthode "update()" appelée plusieurs fois par seconde permettant d'actualiser des valeurs (pour la gestion des animations par exemple).
+L'un des plus gros avantage qu'offre Phaser est qu'il repose sur un système de scènes, qui possèdent des méthodes spécifiques permettant par exemple de pré-charger des images par la méthode "preload()" ou une méthode "update()" appelée plusieurs fois par seconde permettant d'actualiser des valeurs (très utile pour le système d'animations).
+
+Afin de définir une scène, il faut créer une classe héritant de la scène de Phaser et de 
 
 Il suffit simplement de créer une variable de configuration afin de définir la taille du "canvas" utilisé pour dessiner les images, le nombre d'actualisation par seconde de la fonction "update()" ainsi que le nom de la classe de la scène principale :
 
@@ -29,11 +29,16 @@ const config = {
     scene: [MainScene]
 };
 
+
+
 // Création du jeu avec les configurations.
 const game = new Phaser.Game(config);
 ```
 
-## Système d'animation
+### Système de gestion des cartes
+Les scène de Phaser 
+
+## Système d'animations
 Le système d'animation permet au développeur de créer des schémas d'animation. C'est à dire que, par exemple, le développeur peut aisément créer une animation qui engendre le déplacement simultané ou séquentiel d'une ou plusieurs cartes.
 
 ### Principe fondamental
@@ -293,6 +298,8 @@ Le retournement des cartes permet de montrer ou cacher à l'utilisateur le valeu
 ```{figure} images/scale.PNG
 ---
 ---
+
+Effet d'étirement de la propriété scaleX.
 ```
 
 Avec cette fonctionnalité, il suffit de rétrécir totalement la carte horizontalement et de l'étirer à nouveau jusqu'à sa taille originelle pour donner l'impression d'un retournement :

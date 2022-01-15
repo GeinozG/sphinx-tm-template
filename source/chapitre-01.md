@@ -13,7 +13,7 @@ Capture d'écran du prototype
 Les cartes présentes sur la capture d'écran sont des objets Phaser déplaçables avec la souris. A ce stade j'étais capable de développer un environnement dans lequel je pouvais faire évoluer le projet final.
 
 ## Problème majeur rencontré lors du développement
-Lors du développement du projet, un problème majeur  est intervenu. Le problème réside dans la gestion des déplacements des cartes en JavaScript. En effet, une animation de carte dure un certain temps et pendant ce laps de temps, le code doit être "bloqué". C'est à dire que si une autre animtaion devait s'exécuter, elle devrait d'abord attendre que l'animation précédente soit terminée.
+Lors du développement du projet, un problème majeur est intervenu. Le problème réside dans la gestion des déplacements des cartes en JavaScript. En effet, une animation de carte dure un certain temps et pendant ce laps de temps, le code doit être "bloqué". C'est à dire que si une autre animtaion devait s'exécuter, elle devrait d'abord attendre que l'animation précédente soit terminée.
 
 Or l'animation est gérée avec Phaser dans une fonction "update()" asynchrone, ce qui implique que la suite du code est exécuté en parallèle de l'animation, rien n'empêche donc de lancer plusieurs animations simultanément. De plus, le code principal n'est pas conscient qu'une animation est en cours, il ne peut donc pas attendre que l'animation soit finit avant d'exécuter la suite du programme.
 
