@@ -2,12 +2,14 @@
 Le projet repose sur plusieurs grands aspects, qui permettent une répartition du code en différents systèmes.
 
 ## L'utilisation de Phaser
+Phaser se décrit comme un framework de création de jeux vidéos. Il 
 
 ### Système de gestion des cartes
 
 ### Système d'évènements
 
 ### Gestion de la scène et de la boucle principale
+L'un des plus gros avantage qu'offre Phaser est qu'il prend en charge
 
 ## Système d'animation
 Le système d'animation permet au développeur de créer des schémas d'animation. C'est à dire que, par exemple, le développeur peut aisément créer une animation qui engendre le déplacement simultané ou séquentiel d'une ou plusieurs cartes.
@@ -249,7 +251,7 @@ update() // Exécutée 60 fois par seconde par Phaser.
         // Stocke l'animation courante de la liste.
         const currentAnimation = this.animationQueue[i];
 
-        // Identifie le type de l'animation.
+        // Identifie le type de l'animation (mouvement).
         if (currentAnimation.type == "movement")
         {
             // Récupère la référence de la carte concérnée par l'animation.
@@ -271,4 +273,38 @@ Le retournement des cartes permet de montrer ou cacher à l'utilisateur le valeu
 ---
 ```
 
-Avec cette fonctionnalité, il suffit de rétrécir totalement la carte horizontalement et de l'étirer à nouveau jusqu'à sa taille originelle pour donner l'impression d'un retournement.
+Avec cette fonctionnalité, il suffit de rétrécir totalement la carte horizontalement et de l'étirer à nouveau jusqu'à sa taille originelle pour donner l'impression d'un retournement :
+
+```{code-block} js
+---
+emphasize-lines: 15, 18 - 21
+---
+update() // Exécutée 60 fois par seconde par Phaser.
+{
+    // Parcours les animations de la liste (animationQueue).
+    for (let i = 0; i < this.animationQueue.length; i++)
+    {
+        // Stocke l'animation courante de la liste.
+        const currentAnimation = this.animationQueue[i];
+
+        // Identifie le type de l'animation (retournement).
+        if (currentAnimation.type == "flip")
+        {
+            // Récupère la référence de la carte concérnée par l'animation.
+            const card = currentAnimation.card;
+
+            card.scaleX -= 0.05;
+            
+            // Si la carte a fait un retournement complet.
+            if (card.scaleX <= -1)
+            {
+                // Réinitialise l'étirment à sa valeur d'origine.
+                card.scaleX = 1;
+
+                // Animation terminée.
+                currentAnimation.isFinished = true;
+            }
+        }
+    }
+}
+```
