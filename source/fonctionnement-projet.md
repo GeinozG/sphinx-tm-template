@@ -2,7 +2,7 @@
 Le projet repose sur plusieurs grands aspects, qui permettent une répartition du code en différents systèmes.
 
 ## L'utilisation de Phaser
-Phaser se décrit comme un framework de création de jeux vidéos. Il 
+Phaser se décrit comme un framework de création de jeux vidéos, il contient donc de nombreux utilitaires dans ce qui relève de la gestion d'images, de déplacements et d'effets en tous genres comme la distortion d'image ou des effets de transparence.
 
 ### Système de scènes
 L'un des plus gros avantage qu'offre Phaser est qu'il repose sur un système de scènes, qui possèdent des méthodes spécifiques permettant par exemple de pré-charger des images par la méthode "preload()" ou une méthode "update()" appelée plusieurs fois par seconde permettant d'actualiser des valeurs (très utile pour le système d'animations).
@@ -101,13 +101,49 @@ Concrètement, le code se construit de la manière suivante :
 Avant tout, il faut instancier l'objet "EventEmitter" :
 
 ``` js
+// eventEmitter.js
+
 const eventEmitter = new Phaser.Events.EventEmitter();
 ```
 
-Ensuite, dans le code de l'API, c'est là où il faut émettre les événements :
+Ensuite, le code de l'API émet les événements, par exemple :
 
 ``` js
+// api.js
 
+class Cards
+{
+    // Echange la position de deux cartes.
+    swap(index1, index2)
+    {
+        // Emet l'événement.
+        eventEmitter.emit(
+            "swapCard", // Nom de l'événement.
+            index1,     // Premier argument.
+            index2      // Deuxième argument.
+        );
+    }
+}
+```
+
+Enfin, le code du programme s'occupe d'intercepter l'événement :
+
+``` js
+class MainScene extends Phaser.Scene
+{
+    create()
+    {
+        eventEmitter.on(
+            "swapCard",     // Nom de l'événement.
+            this.swapCard,  // Fonction à appelée.
+        );
+    }
+
+    swapCard(index1, index2)
+    {
+        // ...
+    }
+}
 ```
 
 ## Système d'animations
