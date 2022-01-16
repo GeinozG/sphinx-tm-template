@@ -135,7 +135,7 @@ class MainScene extends Phaser.Scene
     {
         eventEmitter.on(
             "swapCard",     // Nom de l'événement.
-            this.swapCard,  // Fonction à appelée.
+            this.swapCard,  // Fonction à appeler.
         );
     }
 
