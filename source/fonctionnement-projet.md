@@ -2,10 +2,10 @@
 Le projet repose sur plusieurs grands aspects, qui permettent une répartition du code en différents systèmes.
 
 ## L'utilisation de Phaser
-Phaser se décrit comme un framework de création de jeux vidéos, il contient donc de nombreux utilitaires dans ce qui relève de la gestion d'images, de déplacements et d'effets en tous genres comme la distortion d'image ou des effets de transparence.
+Phaser[^phaser] se décrit comme un ***framework***[^framework] de création de jeux vidéos, il contient donc de nombreux utilitaires dans ce qui relève de la gestion d'images, de déplacements et d'effets en tous genres comme la distortion d'image ou des effets de transparence.
 
 ### Système de scènes
-L'un des plus gros avantage qu'offre Phaser est qu'il repose sur un système de scènes, qui possèdent des méthodes spécifiques permettant par exemple de pré-charger des images par la méthode "preload()" ou une méthode "update()" appelée plusieurs fois par seconde permettant d'actualiser des valeurs (très utile pour le système d'animations).
+L'un des plus gros avantage qu'offre Phaser est qu'il repose sur un système de scènes, qui possèdent des méthodes spécifiques permettant par exemple de pré-charger des images par la méthode *preload()* ou une méthode *update()* appelée plusieurs fois par seconde permettant d'actualiser des valeurs (très utile pour le système d'animations).
 
 Afin de définir une scène, il faut créer une classe héritant de la scène de Phaser et d'implémenter ses méthodes :
 
@@ -41,7 +41,7 @@ class MainScene extends Phaser.Scene
 }
 ```
 
-Pour instancier la scène, il suffit simplement de créer une variable de configuration afin de définir la taille du "canvas" utilisé pour dessiner les images, le nombre d'actualisation par seconde de la fonction "update()" ainsi que le nom de la classe de la scène principale, et d'instancier une classe "Phaser.Game" :
+Pour instancier la scène, il suffit simplement de créer une variable de configuration afin de définir la taille du ***canvas***[^canvas] utilisé pour dessiner les images, le nombre d'actualisation par seconde de la fonction *update()* ainsi que le nom de la classe de la scène principale, et d'instancier une classe *Phaser.Game* :
 
 ``` js
 const config = {
@@ -87,7 +87,7 @@ class MainScene extends Phaser.Scene
 ```
 
 ### Système d'évènements
-Le système d'évènements de Phaser joue un rôle crucial dans le projet. En effet, il permet la communication entre l'API et le programme en lui-même. Pour ce faire, il est nécessaire d'instancier un objet "EventEmitter", proposer par Phaser. Cet objet permet d'émettre des événements et de les recevoir. C'est à dire qu'il est possible d'établir une connexion entre deux fichiers ou parties de code différentes en émettant un événement contenant des paramètres qui seront transmis à une autre partie du code qui appellera une fonction en y passant les paramètres spécifiés lors de l'envoi de l'événement. Cela revient en résumé à appeler une fonction qui est sensée être hors de portée :
+Le système d'évènements de Phaser joue un rôle crucial dans le projet. En effet, il permet la communication entre l'API et le programme en lui-même. Pour ce faire, il est nécessaire d'instancier un objet *EventEmitter*[^eventEmitter], proposer par Phaser. Cet objet permet d'émettre des événements et de les recevoir. C'est à dire qu'il est possible d'établir une connexion entre deux fichiers ou parties de code différentes en émettant un événement contenant des paramètres qui seront transmis à une autre partie du code qui appellera une fonction en y passant les paramètres spécifiés lors de l'envoi de l'événement. Cela revient en résumé à appeler une fonction qui est sensée être hors de portée :
 
 ```{figure} images/event.PNG
 ---
@@ -98,7 +98,7 @@ Fonctionnement du système d'événements de Phaser.
 
 Concrètement, le code se construit de la manière suivante :
 
-Avant tout, il faut instancier l'objet "EventEmitter" :
+Avant tout, il faut instancier l'objet *EventEmitter* :
 
 ``` js
 // eventEmitter.js
@@ -150,7 +150,7 @@ class MainScene extends Phaser.Scene
 Le système d'animation permet au développeur de créer des schémas d'animation. C'est à dire que, par exemple, le développeur peut aisément créer une animation qui engendre le déplacement simultané ou séquentiel d'une ou plusieurs cartes.
 
 ### Principe fondamental
-Naïvement, on pourrait penser qu'il suffit que chaque carte possède une propriété "animation" qui contient les informations nécessaires à décrire une animation, par exemple, de déplacement :
+Naïvement, on pourrait penser qu'il suffit que chaque carte possède une propriété *animation* qui contient les informations nécessaires à décrire une animation, par exemple, de déplacement :
 
 ``` js
 const card = {...};
@@ -165,7 +165,7 @@ card.animation = {
 };
 ```
 
-Et qu'ainsi, dans la fonction "update" gérée par Phaser, une "boucle for" parcours toutes les cartes et effectue l'animation qui lui est attachée, si celle-ci doit être animée :
+Et qu'ainsi, dans la fonction *update()* gérée par Phaser, une *boucle for* parcours toutes les cartes et effectue l'animation qui lui est attachée, si celle-ci doit être animée :
 
 ``` js
 update() // Exécutée 60 fois par seconde par Phaser.
@@ -186,7 +186,7 @@ update() // Exécutée 60 fois par seconde par Phaser.
 
 Or, cette manière de procédé comporte un gros désavantage. En effet, elle ne laisse au programme que la possibilité de gérer toutes les animations en même temps, ce qui signifie que si le développeur souhaite en jouer dans un certain ordre, il doit attendre que l'animation précédente soit terminer avant de configurer la suivante dans une ou plusieurs cartes. Ce n'est pas viable pour gérer une quantité importante d'animations qui s'exécutent à la suite.
 
-C'est pour cela qu'un véritable système d'animation est nécessaire. Concrètement, la scène principale possède une propriété "animationQueue". Il s'agit d'une liste initialement vide, qui stocke les animations les unes à la suite des autres. Ce principe simple permet de conserver l'ordre dans lequel les animations doivent être jouées ; selon l'ordre d'apparition dans la liste. Ce procédé nécessite donc également la création d'un objet "animation", qui sera l'objet stocké dans la liste animationQueue :
+C'est pour cela qu'un véritable système d'animation est nécessaire. Concrètement, la scène principale possède une propriété *animationQueue*. Il s'agit d'une liste initialement vide, qui stocke les animations les unes à la suite des autres. Ce principe simple permet de conserver l'ordre dans lequel les animations doivent être jouées ; selon l'ordre d'apparition dans la liste. Ce procédé nécessite donc également la création d'un objet *animation*, qui sera l'objet stocké dans la liste animationQueue :
 
 ``` js
 function moveCard(targetCard, ...)
@@ -211,7 +211,7 @@ function moveCard(targetCard, ...)
 }
 ```
 
-De cette manière, la fonction "update", gérée par Phaser, peut accéder à la liste d'animations et les jouer dans l'ordre. Ainsi, une fois que la première animation de la liste est arrivée à son terme, il suffit de la supprimer pour pouvoir traiter la suivante.
+De cette manière, la fonction *update()*, gérée par Phaser, peut accéder à la liste d'animations et les jouer dans l'ordre. Ainsi, une fois que la première animation de la liste est arrivée à son terme, il suffit de la supprimer pour pouvoir traiter la suivante.
 
 ``` js
 update() // Exécutée 60 fois par seconde par Phaser.
@@ -252,7 +252,7 @@ update() // Exécutée 60 fois par seconde par Phaser.
 }
 ```
 
- Cependant, comme chaque objet "animation" décrit le comportement d'une unique carte, il n'est pas possible d'exécuter plusieurs animations simultanément. Pour contourner ce problème, le système est programmé pour jouer toutes les animations à la suite qui ne sont pas interrompues par un objet "animation" de type "break" ("pause" ou "rupture" en anglais). Lorsque ce type est rencontré, le système s'assure que toutes les animations précédentes soient terminées avant de jouer le bloque d'animations suivant :
+ Cependant, comme chaque objet *animation* décrit le comportement d'une unique carte, il n'est pas possible d'exécuter plusieurs animations simultanément. Pour contourner ce problème, le système est programmé pour jouer toutes les animations à la suite qui ne sont pas interrompues par un objet *animation* de type *break*[^break]. Lorsque ce type est rencontré, le système s'assure que toutes les animations précédentes soient terminées avant de jouer le bloque d'animations suivant :
 
 ```{code-block} js
 ---
@@ -305,10 +305,10 @@ update() // Exécutée 60 fois par seconde par Phaser.
 }
 ```
 
-Bien que l'emploie du "switch" soit pratique pour identifier le type d'animation, il ne peut pas être utiliser dans le cas présent car l'instruction ```break;``` du type "break" doit mettre fin à la "boucle for" et non à l'instruction "switch".
+Bien que l'emploie du *switch* soit pratique pour identifier le type d'animation, il ne peut pas être utiliser dans le cas présent car l'instruction ```break;``` du type *break* doit mettre fin à la *boucle for* et non à l'instruction *switch*.
 
 ### Déplacement des cartes
-Le framework Phaser permet de déplacer ses objets par un procédé qui s'appelle le "tweening". Ce procédé permet en effet de déplacer un objet d'un point A à un point B automatiquement et fluidement. Appliquer du tweening sur une carte exécute un code asynchrone modifiant les propriétés "x" et "y" de la carte concérnée afin de la faire se diriger vers le point souhaité :
+Le *framework* Phaser permet de déplacer ses objets par un procédé qui s'appelle le *tweening*[^tweening]. Ce procédé permet en effet de déplacer un objet d'un point A à un point B automatiquement et fluidement. Appliquer du tweening sur une carte exécute un code asynchrone modifiant les propriétés *x* et *y* de la carte concérnée afin de la faire se diriger vers le point souhaité :
 
 ``` js
     // "this" fait référence à la scène de Phaser.
@@ -331,9 +331,9 @@ Le framework Phaser permet de déplacer ses objets par un procédé qui s'appell
     });
 ```
 
-Cependant, ce principe ne respecte pas le fondement du système d'animation développé précédement, qui consiste a stocké dans une liste toutes les animations créées, afin de pouvoir les jouer dans un ordre défini, simultanément ou non. En effet, le tweening proposé par Phaser déclenche une animation au moment-même où le tweening est créé, ou éventuellement avec un délai mesuré en microsecondes. De plus, le système de "callback" (appel d'une fonction à la fin de l'animation) rajoute une complexité supplémentaire dans la gestion des animations. Par conséquent, il est préférable que les déplacements des cartes ne relèvent pas de la responsabilité de Phaser.
+Cependant, ce principe ne respecte pas le fondement du système d'animation développé précédement, qui consiste a stocké dans une liste toutes les animations créées, afin de pouvoir les jouer dans un ordre défini, simultanément ou non. En effet, le *tweening* proposé par Phaser déclenche une animation au moment-même où le *tweening* est créé, ou éventuellement avec un délai mesuré en microsecondes. De plus, le système de *callback*[^callback] (appel d'une fonction à la fin de l'animation) rajoute une complexité supplémentaire dans la gestion des animations. Par conséquent, il est préférable que les déplacements des cartes ne relèvent pas de la responsabilité de Phaser.
 
-Il est donc nécessaire que le programme gère ce type d'animation lui-même. Pour cela, l'objet "animation" de type "movement" doit faire appel à des notions de trigonométrie élémentaire afin de calculer l'angle en radian entre le point de départ et le point d'arrivé du déplacement :
+Il est donc nécessaire que le programme gère ce type d'animation lui-même. Pour cela, l'objet *animation* de type *movement* doit faire appel à des notions de trigonométrie élémentaire afin de calculer l'angle en radian entre le point de départ et le point d'arrivé du déplacement :
 
 ``` js
 const animation = {
@@ -354,7 +354,7 @@ Pour obtenir l'angle de la direction, il suffit de calculer l'arc tangente du qu
 \alpha = \arctan{(\frac{\Delta y}{\Delta x})}
 ```
 
-Javascript possède nativement un objet "Math" qui contient une fonction "atan2(y, x)" qui prend en paramètres les coordonnées "x" et "y" du point d'arrivé relativement au point de départ (0; 0) et retourne l'arc tangente formé par le quotient de "y" sur "x". L'avantage de cette fonction est qu'elle gère elle-même les cas où "x" ou "y" serait égal à 0 :
+Javascript possède nativement un objet *Math*[^math] qui contient une fonction *atan2(y, x)*[^atan2] qui prend en paramètres les coordonnées *x* et *y* du point d'arrivé relativement au point de départ (0; 0) et retourne l'arc tangente formé par le quotient de *y* sur *x*. L'avantage de cette fonction est qu'elle gère elle-même les cas où *x* ou *y* serait égal à 0 :
 
 ```{code-block} js
 ---
@@ -372,7 +372,7 @@ const animation = {
                                (animation.x - card.futureX));
 ```
 
-Comme l'angle de la direction dans laquelle la carte doit se déplacer n'est calculé qu'une seul fois au moment de la création de l'animation, la fonction "update" de Phaser n'a plus qu'à actualiser les coordonnées de la carte en tenant compte de l'angle. Les fonctions trigonométriques Sinus/Cosinus de l'angle permettent d'obtenir le décalage horizontal et vertical approprié :
+Comme l'angle de la direction dans laquelle la carte doit se déplacer n'est calculé qu'une seul fois au moment de la création de l'animation, la fonction *update()* de Phaser n'a plus qu'à actualiser les coordonnées de la carte en tenant compte de l'angle. Les fonctions trigonométriques Sinus/Cosinus de l'angle permettent d'obtenir le décalage horizontal et vertical approprié :
 
 ```{code-block} js
 ---
@@ -401,7 +401,7 @@ update() // Exécutée 60 fois par seconde par Phaser.
 ```
 
 ### Retournement des cartes
-Le retournement des cartes permet de montrer ou cacher à l'utilisateur le valeur d'une carte. Grâce à Phaser, ceci peut être géré aisément. En effet, chaque carte est une instance de la classe "Image" proposé par Phaser. Cette classe a une propriété "scaleX" et "scaleY" qui représentent respectivement l'étirement horizontal et vertical de l'image. Ainsi, modifier l'une ou l'autre de ces valeurs, modifie le rendu visuel de la carte en question. La valeur par défaut de ces propriétés est de 1, signifiant un étirement d'échelle 1:1 ; plus la valeur est grande, plus l'image est étirée sur l'axe correspondant :
+Le retournement des cartes permet de montrer ou cacher à l'utilisateur le valeur d'une carte. Grâce à Phaser, ceci peut être géré aisément. En effet, chaque carte est une instance de la classe *Image*[^image] proposé par Phaser. Cette classe a une propriété *scaleX* et *scaleY* qui représentent respectivement l'étirement horizontal et vertical de l'image. Ainsi, modifier l'une ou l'autre de ces valeurs, modifie le rendu visuel de la carte en question. La valeur par défaut de ces propriétés est de 1, signifiant un étirement d'échelle 1:1 ; plus la valeur est grande, plus l'image est étirée sur l'axe correspondant :
 
 ```{figure} images/scale.PNG
 ---
@@ -445,3 +445,14 @@ update() // Exécutée 60 fois par seconde par Phaser.
     }
 }
 ```
+
+[^phaser]: https://phaser.io/
+[^framework]: Voir glossaire
+[^canvas]: Voir glossaire
+[^eventEmitter]: https://photonstorm.github.io/phaser3-docs/Phaser.Events.EventEmitter.html
+[^break]: *pause* ou *rupture* en anglais
+[^tweening]: Voir glossaire
+[^callback]: *Fonction de rappel* en français, voir glossaire
+[^math]: https://developer.mozilla.org/fr/docs/Web/JavaScript/Reference/Global_Objects/Math
+[^atan2]: https://developer.mozilla.org/fr/docs/Web/JavaScript/Reference/Global_Objects/Math/atan2
+[^image]: https://photonstorm.github.io/phaser3-docs/Phaser.GameObjects.Image.html
