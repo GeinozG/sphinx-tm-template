@@ -11,7 +11,6 @@ Développement d’un outil informatique démontrant visuellement la perception 
     :caption: Table des matières
 
     introduction.md
-    aspects-pédagogiques.md
     api.md
     scénarios-utilisation.md
     fonctionnement-projet.md

@@ -87,14 +87,14 @@ class MainScene extends Phaser.Scene
 ```
 
 ### Système d'événements
-Le système d'événements de Phaser joue un rôle crucial dans le projet. En effet, il permet la communication entre l'API et le programme en lui-même. Pour ce faire, il est nécessaire d'instancier un objet *EventEmitter*[^eventEmitter], proposer par Phaser. Cet objet permet d'émettre des événements et de les recevoir. C'est-à-dire qu'il est possible d'établir une connexion entre deux fichiers ou parties de code différentes en émettant un événement contenant des paramètres qui seront transmis à une autre partie du code qui appellera une fonction en y passant les paramètres spécifiés lors de l'envoi de l'événement. Cela revient en résumé à appeler une fonction qui est censée être hors de portée :
-
-```{figure} images/event.PNG
+```{figure} images/event.png
 ---
 ---
 
 Fonctionnement du système d'événements de Phaser.
 ```
+
+Le système d'événements de Phaser joue un rôle crucial dans le projet. En effet, il permet la communication entre l'API et le programme en lui-même. Pour ce faire, il est nécessaire d'instancier un objet *EventEmitter*[^eventEmitter], proposer par Phaser. Cet objet permet d'émettre des événements et de les recevoir. C'est-à-dire qu'il est possible d'établir une connexion entre deux fichiers ou parties de code différentes en émettant un événement contenant des paramètres qui seront transmis à une autre partie du code qui appellera une fonction en y passant les paramètres spécifiés lors de l'envoi de l'événement. Cela revient en résumé à appeler une fonction qui est censée être hors de portée.
 
 Concrètement, le code se construit de la manière suivante :
 
