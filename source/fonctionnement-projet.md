@@ -93,7 +93,7 @@ Le système d'évènements de Phaser joue un rôle crucial dans le projet. En ef
 ---
 ---
 
-Fonctionnement du système d'événement de Phaser.
+Fonctionnement du système d'événements de Phaser.
 ```
 
 Concrètement, le code se construit de la manière suivante :
