@@ -66,7 +66,7 @@ const game = new Phaser.Game(config);
 ```
 
 ### Système de gestion des cartes
-Les scènes de Phaser permettent la création d'objets divers, comme des images, du texte, etc. qui seront affichés à l'écran. Les cartes et les variables sont en fait des objets images dont les coordonnées varient afin de les faire se déplacer :
+Les scènes de Phaser permettent la création d'objets divers, comme des images, du texte, ou autre, à affichés à l'écran. Les cartes et les variables sont en fait des objets images dont les coordonnées varient afin de les faire se déplacer :
 
 ``` js
 class MainScene extends Phaser.Scene
@@ -94,9 +94,7 @@ class MainScene extends Phaser.Scene
 Fonctionnement du système d'événements de Phaser.
 ```
 
-Le système d'événements de Phaser joue un rôle crucial dans le projet. En effet, il permet la communication entre l'API et le programme en lui-même. Pour ce faire, il est nécessaire d'instancier un objet *EventEmitter*[^eventEmitter], proposer par Phaser. Cet objet permet d'émettre des événements et de les recevoir. C'est-à-dire qu'il est possible d'établir une connexion entre deux fichiers ou parties de code différentes en émettant un événement contenant des paramètres qui seront transmis à une autre partie du code qui appellera une fonction en y passant les paramètres spécifiés lors de l'envoi de l'événement. Cela revient en résumé à appeler une fonction qui est censée être hors de portée.
-
-Concrètement, le code se construit de la manière suivante :
+Le système d'événements de Phaser joue un rôle crucial dans le projet. En effet, il permet la communication entre l'API et le programme en lui-même. Pour ce faire, il est nécessaire d'instancier un objet *EventEmitter*[^eventEmitter], proposé par Phaser. Cet objet permet d'émettre des événements et de les recevoir. C'est-à-dire qu'il est possible d'établir une connexion entre plusieurs fichiers ou parties de code différentes en émettant un événement contenant des paramètres qui seront transmis à une autre partie du code qui appellera une fonction en lui passant les paramètres spécifiés lors de l'envoi de l'événement. Cela revient en résumé à appeler une fonction qui est censée être hors de portée. Concrètement, le code se construit de la manière suivante :
 
 Avant tout, il faut instancier l'objet *EventEmitter* :
 
@@ -106,7 +104,7 @@ Avant tout, il faut instancier l'objet *EventEmitter* :
 const eventEmitter = new Phaser.Events.EventEmitter();
 ```
 
-Ensuite, le code de l'API émet les événements, par exemple :
+Ensuite, le code de l'API émet les événements :
 
 ``` js
 // api.js
@@ -146,7 +144,7 @@ class MainScene extends Phaser.Scene
 }
 ```
 
-## Système d'animations
+## Système d'animation
 Le système d'animation permet au développeur de créer des schémas d'animation. C'est-à-dire que, par exemple, le développeur peut aisément créer une animation qui engendre le déplacement simultané ou séquentiel d'une ou plusieurs cartes.
 
 ### Principe fondamental
@@ -165,12 +163,12 @@ card.animation = {
 };
 ```
 
-Et qu'ainsi, dans la fonction *update()* gérée par Phaser, une *boucle for* parcours toutes les cartes et effectue l'animation qui lui est attachée, si celle-ci doit être animée :
+Et qu'ainsi, dans la fonction *update()* gérée par Phaser, une *boucle for* parcourt toutes les cartes et effectue l'animation qui lui est attachée, si celle-ci doit être animée :
 
 ``` js
 update() // Exécutée 60 fois par seconde par Phaser.
 {
-    // Parcours toutes les cartes.
+    // Parcourt toutes les cartes.
     for (let i = 0; i < nbCards; i++)
     {
         // Stocke la carte courante dans une variable.
@@ -227,7 +225,7 @@ update() // Exécutée 60 fois par seconde par Phaser.
         {
             // Type: Déplacement
             case "movement":
-                // Récupère la référence de la carte concérnée par l'animation.
+                // Récupère la référence de la carte concérnée.
                 const card = currentAnimation.card;
                 
                 // Exécution de l'animation...
@@ -333,7 +331,7 @@ Le *framework* Phaser permet de déplacer ses objets par un procédé qui s'appe
 
 Cependant, ce principe ne respecte pas le fondement du système d'animation développé précédemment, qui consiste à stocker dans une liste toutes les animations créées, afin de pouvoir les jouer dans un ordre défini, simultanément ou non. En effet, le *tweening* proposé par Phaser déclenche une animation au moment-même où le *tweening* est créé, ou éventuellement avec un délai mesuré en microsecondes. De plus, le système de *callback*[^callback] (appel d'une fonction à la fin de l'animation) rajoute une complexité supplémentaire dans la gestion des animations. Par conséquent, il est préférable que les déplacements des cartes ne relèvent pas de la responsabilité de Phaser.
 
-Il est donc nécessaire que le programme gère ce type d'animation lui-même. Pour cela, l'objet *animation* de type *movement* doit faire appel à des notions de trigonométrie élémentaires afin de calculer l'angle en radian entre le point de départ et le point d'arrivée du déplacement :
+Il est donc nécessaire que le programme gère ce type d'animation lui-même. Pour cela, l'objet *animation* de type *movement* doit faire appel à des notions de trigonométrie élémentaires afin de calculer l'angle en radians entre le point de départ et le point d'arrivée du déplacement :
 
 ``` js
 const animation = {
@@ -348,7 +346,7 @@ const animation = {
 };
 ```
 
-Pour obtenir l'angle de la direction, il suffit de calculer l'arc tangente du quotient de la différence d'ordonnée sur la différence d'abscisse entre le point de départ et de d'arrivée :
+Pour obtenir l'angle de la direction, il suffit de calculer l'arc tangente du quotient de la différence d'ordonnée sur la différence d'abscisse entre le point de départ et d'arrivée :
 
 ``` {math}
 \alpha = \arctan{(\frac{\Delta y}{\Delta x})}
