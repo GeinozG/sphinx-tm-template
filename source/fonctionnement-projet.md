@@ -349,7 +349,7 @@ const animation = {
 Pour obtenir l'angle de la direction, il suffit de calculer l'arc tangente du quotient de la différence d'ordonnée sur la différence d'abscisse entre le point de départ et d'arrivée :
 
 ``` {math}
-\alpha = \arctan{(\frac{\Delta y}{\Delta x})}
+\alpha = \arctan{\left(\frac{\Delta y}{\Delta x}\right)}
 ```
 
 Javascript possède nativement un objet *Math*[^math] qui contient une fonction *atan2(y, x)*[^atan2] qui prend en paramètres les coordonnées *x* et *y* du point d'arrivée relativement au point de départ (0; 0) et retourne l'arc tangente formé par le quotient de *y* sur *x*. L'avantage de cette fonction est qu'elle gère elle-même les cas où *x* ou *y* serait égal à 0 :
@@ -399,7 +399,7 @@ update() // Exécutée 60 fois par seconde par Phaser.
 ```
 
 ### Retournement des cartes
-Le retournement des cartes permet de montrer ou de cacher à l'utilisateur la valeur d'une carte. Grâce à Phaser, ceci peut être géré aisément. En effet, chaque carte est une instance de la classe *Image*[^image] proposée par Phaser. Cette classe a une propriété *scaleX* et *scaleY* qui représentent respectivement l'étirement horizontal et vertical de l'image. Ainsi, modifier l'une ou l'autre de ces valeurs, modifie le rendu visuel de la carte en question. La valeur par défaut de ces propriétés est de 1, signifiant un étirement d'échelle 1:1 ; plus la valeur est grande, plus l'image est étirée sur l'axe correspondant :
+Le retournement des cartes permet de montrer ou de cacher à l'utilisateur la valeur d'une carte. Grâce à Phaser, ceci peut être géré aisément. En effet, chaque carte est une instance de la classe *Image*[^image] proposée par Phaser. Cette classe possède des propriétés *scaleX* et *scaleY* qui représentent respectivement l'étirement horizontal et vertical de l'image. Ainsi, modifier l'une ou l'autre de ces valeurs, modifie le rendu visuel de la carte en question. La valeur par défaut de ces propriétés est de 1, signifiant un étirement d'échelle 1:1 ; plus la valeur est grande, plus l'image est étirée sur l'axe correspondant :
 
 ```{figure} images/scale.PNG
 ---
@@ -425,7 +425,7 @@ update() // Exécutée 60 fois par seconde par Phaser.
         // Identifie le type de l'animation (retournement).
         if (currentAnimation.type == "flip")
         {
-            // Récupère la référence de la carte concérnée par l'animation.
+            // Récupère la référence de la carte concernée par l'animation.
             const card = currentAnimation.card;
 
             card.scaleX -= 0.05;
