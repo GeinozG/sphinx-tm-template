@@ -13,7 +13,9 @@ Visualisation interactive des opérations et algorithmes sur les listes à l’a
     introduction.md
     api.md
     scénarios-utilisation.md
-    tester-outil.md
+    aspects-pédagogiques.md
     fonctionnement-projet.md
     conclusion.md
+    tester-outil.md
     glossaire.md
+    annexe.md
