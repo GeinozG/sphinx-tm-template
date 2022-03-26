@@ -24,10 +24,10 @@ Le projet repose sur 2 technologies principales : Javascript et HTML5. Cependant
 Afin que l'utilisation de l'outil soit la plus accessible possible, les langages de programmation du Web ont été utilisés pour le développer. Cela signifie que pour utiliser l'outil, seul un accès à un ordinateur opérationnel étant doté d'un navigateur internet et d'une connexion est nécessaire.
 
 ## Connaissances requises pour utiliser l'outil
-L'outil fait appel aux notions de variables ; éléments qui constituent la liste, ainsi qu'aux opérations de bases entre variables numérique (calculs, affectations de valeurs) et la notion de condition entre les variables utilisant des opérateurs de conditions.
+L'outil fait appel aux notions de variables ; éléments qui constituent la liste, ainsi qu'aux opérations de bases entre variables numérique (calculs, affectations de valeurs).
 
-## Connaissances requises pour comprendre le fonctionnement de l'outil
-Afin de comprendre comment l'outil fonctionne, il est nécessaire de comprendre le code qui le compose. C'est-à-dire qu'il faut avoir un niveau de base qui couvre tous les fondamentaux du Javascript. Le code étant largement commenté, il n'est pas forcément nécessaire de savoir utiliser le framework Phaser pour comprendre le code source.
+## Connaissances requises au développement de l'outil
+Afin de comprendre le fonctionnement de l'outil et pouvoir continuer son développement, un niveau de base qui couvre tous les fondamentaux du Javascript est nécessaire. Le code étant largement commenté, il n'est pas forcément essentiel de savoir utiliser le framework Phaser pour comprendre le code source.
 
 [^framework]: Voir glossaire
 [^phaser]: https://phaser.io/
