@@ -1,4 +1,4 @@
-# Fonctionnement du projet
+# Fonctionnement de l'outil
 Le projet repose sur plusieurs grands aspects, qui permettent une répartition du code en différents systèmes.
 
 ## L'utilisation de Phaser
