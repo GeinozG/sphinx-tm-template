@@ -2,12 +2,12 @@
 Le projet repose sur plusieurs grands aspects, qui permettent une répartition du code en différents systèmes.
 
 ## L'utilisation de Phaser
-Phaser[^phaser] se décrit comme un ***framework***[^framework] de création de jeux vidéo, il contient donc de nombreux utilitaires dans ce qui relève de la gestion d'images, de déplacements et d'effets en tous genres comme la distortion d'image ou des effets de transparence.
+Phaser[^phaser] se décrit comme un ***framework***[^framework] de création de jeux vidéo, il contient donc de nombreux utilitaires facilitant la gestion d'images, les déplacements et des effets en tous genres comme la distortion d'image ou des effets de transparence.
 
 ### Système de scènes
 L'un des plus gros avantage qu'offre Phaser est qu'il repose sur un système de scènes, qui possèdent des méthodes spécifiques permettant par exemple de pré-charger des images par la méthode *preload()* ou une méthode *update()* appelée plusieurs fois par seconde permettant d'actualiser des valeurs (très utile pour le système d'animations).
 
-Afin de définir une scène, il faut créer une classe héritant de la scène de Phaser et d'implémenter ses méthodes :
+Afin de définir une scène, il faut créer une classe héritant de la scène de base de Phaser et d'implémenter ses méthodes :
 
 ``` js
 class MainScene extends Phaser.Scene

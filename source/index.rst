@@ -3,7 +3,7 @@
     You can adapt this file completely to your liking, but it should at least
     contain the root `toctree` directive.
 
-Développement d’un outil informatique démontrant visuellement la perception d’une liste pour un ordinateur
+Visualisation interactive des opérations et algorithmes sur les listes à l’aide d’un jeu de cartes
 ============================
 
 ..  toctree::

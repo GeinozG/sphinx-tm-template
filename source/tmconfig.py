@@ -1,6 +1,6 @@
 class TMConfig:
 
-    title = u'Développement d’un outil informatique démontrant visuellement la perception d’une liste pour un ordinateur'
+    title = u'Visualisation interactive des opérations et algorithmes sur les listes à l’aide d’un jeu de cartes'
     first_name = 'Grégoire'
     last_name = 'Geinoz'
     author = f'{first_name} {last_name}'
@@ -8,7 +8,7 @@ class TMConfig:
     month = u'Décembre'
     seminary_title = u'Développement d’outils ou matériel d’enseignement de l’informatique'
     tutor = u"Cédric Donner"
-    release = "Version intermédiaire"
+    release = "Version finale"
     repository_url = "https://github.com/{your-docs-url}"
 
     @classmethod
