@@ -66,5 +66,5 @@ console.log("Le minimum est : " + minimum);
 
 * Ligne ```2``` : ```cards.appendList(liste)``` anime la création de la liste initiale.
 * Ligne ```5``` : ```vars.create("minimum")``` et ```cards.read(0, "minimum")``` anime la création de la variable ```minimum``` et lui assigne la valeur de la carte à l'indice ```0```.
-* Ligne ```10``` : ```mince alors```
+* Ligne ```10``` : Il aurait été intéressant de pouvoir montrer visuellement la condition mais cette fonctionnalité ne figure pas dans la version actuelle de l'outil.
 * Ligne ```12``` : ```cards.read(i, "minimum")``` assigne la valeur de la carte à l'indice ```i``` à la variable ```minimum```.
