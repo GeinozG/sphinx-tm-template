@@ -7,7 +7,7 @@ Un premier scénario, et pas des moindres, est de faire expérimenter aux élèv
 Les expérimentations se font directement en écrivant du code dans un langage quelconque, tant qu'il permet d'appeler les fonctions de l'API au moment d'une opération.
 
 ## Introduction aux algorithmes
-Si les notions de bases de la gestion des listes sont acquises, alors l'outil devrait être en tout cas partiellement adapté à démontrer visuellement les opérations effectuées par un algorithme reposant sur l'utilisation d'une liste ; par exemple, un algorithme de tri, de recherche ou autre :
+Si les notions de bases de la gestion des listes sont acquises, alors l'outil devrait être en tout cas partiellement adapté à démontrer visuellement les opérations effectuées par un algorithme reposant sur l'utilisation d'une liste :
 
 ### Sommer tous les éléments d'une liste
 
