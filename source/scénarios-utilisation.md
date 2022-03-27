@@ -74,7 +74,7 @@ La recherche dichotomique fait parti des algorithmes intéressants auxquels l'ou
 
 ```{code-block} js
 ---
-emphasize-lines: 3, 4, 5, 6, 8, 10, 14, 16, 20
+emphasize-lines: 5, 8, 11, 12, 14, 17, 20, 22, 27, 30, 35
 linenos: true
 ---
 // La liste passée en paramètre doit être triée.
@@ -86,28 +86,36 @@ function recherche(liste, valeur)
     // Borne supérieure prise en compte dans la recherche.
     let dernier = liste.length - 1;
     
+    // Déclarations de variables utiles.
     let milieu;
     let element;
 
     while (premier <= dernier)
     {
+        // Milieu des bornes inférieure et supérieure.
         milieu = Math.floor((premier + dernier) / 2);
+
+        // Element courant de la liste.
         element = liste[milieu];
 
         if (element == valeur)
         {
+            // Retourne l'indice de l'élément trouvé.
             return milieu;
         }
         else if (element < valeur)
         {
+            // Décale la borne inférieure après le milieu.
             premier = milieu + 1;
         }
         else
         {
+            // Décale la borne supérieure avant le milieu.
             dernier = milieu - 1;
         }
     }
 
+    // Retourne -1 si la valeur n'a pas été trouvée.
     return -1;
 }
 
