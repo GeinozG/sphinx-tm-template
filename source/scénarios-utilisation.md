@@ -7,7 +7,7 @@ Un premier scénario, et pas des moindres, est de faire expérimenter aux élèv
 Les expérimentations se font directement en écrivant du code dans un langage quelconque, tant qu'il permet d'appeler les fonctions de l'API au moment d'une opération.
 
 ## Introduction aux algorithmes
-Si les notions de bases de la gestion des listes sont acquises, alors, le programme est tout à fait adapté à démontrer visuellement les opérations effectuées par un algorithme reposant sur l'utilisation d'une liste ; par exemple, un algorithme de tri, de recherche ou autre :
+Si les notions de bases de la gestion des listes sont acquises, alors l'outil devrait être en tout cas partiellement adapté à démontrer visuellement les opérations effectuées par un algorithme reposant sur l'utilisation d'une liste ; par exemple, un algorithme de tri, de recherche ou autre :
 
 ### Sommer tous les éléments d'une liste
 
@@ -124,14 +124,13 @@ console.log(recherche([1, 2, 3, 4, 5, 6, 7, 8, 9], 5));  // 4
 console.log(recherche([1, 2, 3, 4, 5, 6, 7, 8, 9], 10)); // -1
 ```
 
-Aux lignes ```1```, ```1``` et ```1```, le mieux aurait été de pouvoir créer des variables spéciales de type "indice" qui montre visuellement à quelles cartes elles font référence dans la liste :
+Aux lignes ```5```, ```8``` et ```11```, le mieux aurait été de pouvoir créer des variables spéciales de type "indice" qui montre visuellement à quelles cartes elles font référence dans la liste. De plus, aux lignes ```14```, ```22``` et ```27```, l'animation des conditions ne figurent pas encore comme fonctionnalités de l'outil :
 
-* Ligne ```2``` : ```vars.create("premier", 0)``` anime la création de la variable ```premier```.
-* Ligne ```2``` : ```vars.create("dernier", liste.length - 1)``` anime la création de la variable ```dernier```.
-* Ligne ```2``` : ```vars.create("milieu", Math.floor((premier + dernier) / 2))``` anime la création de la variable ```milieu```.
-* Ligne ```2``` : ```vars.create("element")``` anime la création de la variable ```element```.
-* Ligne ```2``` : ```rien``` anime la création de la liste initiale.
-* Ligne ```2``` : ```rien``` anime la création de la liste initiale.
-* Ligne ```2``` : ```rien``` anime la création de la liste initiale.
-* Ligne ```2``` : ```vars.assign("first", milieu + 1)``` anime la création de la liste initiale.
-* Ligne ```2``` : ```vars.assign("last", milieu - 1)``` anime la création de la liste initiale.
+* Ligne ```5``` : ```vars.create("premier", 0)``` anime la création de la variable ```premier```.
+* Ligne ```8``` : ```vars.create("dernier", liste.length - 1)``` anime la création de la variable ```dernier```.
+* Ligne ```11``` : ```vars.create("milieu")``` anime la création de la variable ```milieu``` avec une valeur par défaut.
+* Ligne ```12``` : ```vars.create("element")``` anime la création de la variable ```element``` avec une valeur par défaut.
+* Ligne ```17``` : ```vars.assign("milieu", Math.floor((premier + dernier) / 2))``` anime l'assigniation de la valeur à la variable ```milieu```.
+* Ligne ```20``` : ```vars.assign("element", liste[milieu])``` anime l'assigniation de la valeur à la variable ```element```.
+* Ligne ```30``` : ```vars.assign("premier", milieu + 1)``` anime l'assigniation de la valeur à la variable ```premier```.
+* Ligne ```35``` : ```vars.assign("dernier", milieu - 1)``` anime l'assigniation de la valeur à la variable ```dernier```.
