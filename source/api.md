@@ -10,5 +10,3 @@ Une API, abréviation de "Application Programming Interface", ou en français "i
 
 Fonctionnement de l'API.
 ```
-
-Pour un aperçu de toutes les fonctions que possède l'API, consultez le chapitre *Tester l'outil*.
