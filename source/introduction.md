@@ -29,10 +29,8 @@ L'outil fait appel aux notions de variables ; éléments qui constituent la list
 ## Connaissances requises au développement de l'outil
 Afin de comprendre le fonctionnement de l'outil et pouvoir continuer son développement, un niveau de base qui couvre tous les fondamentaux du Javascript est nécessaire. Le code étant largement commenté, il n'est pas forcément essentiel de savoir utiliser le framework Phaser pour comprendre le code source.
 
-## Difficultés rencontrées lors du développement
-A défaut d'avoir rencontré de nombreuses difficultés techniques, l'accroc principal a été la gestion du temps. En effet, l'estimation du temps pour l'ajout d'une fonctionnalité est très souvent largement inférieure à la réalité car de nombreux petits détails techniques n'apparaissent pas dans l'image globale qu'on s'imagine pour implémenter la fonctionnalité. De plus, programmer exige une grande concentration et d'être totalement impliqué afin d'être productif. Une certaine fatigue mentale survient donc rapidement et des pauses plus ou moins fréquentes sont nécessaires.
-
-Une autre difficulté majeure rencontrée a été la gestion des animations. En effet, il s'agissait de mettre de l'ordre dans la manière dont les animations sont jouées. Par exemple, si une animation est en train d'être jouée et que, par la continuité du code, une autre animation doit être jouée, il faut attendre que la première animation soit finie avant de jouer la deuxième. Mais peut-être que l'on souhaite que les deux animations se jouent simultanément ? Il fallait permettre au développeur d'expliciter parfaitement comment les animations doivent s'enchaîner afin de prévenir tout comportement indéterminé (le code qui joue les animations est asynchrone, une animation qui dépend d'une autre n'a donc aucune connaissance de l'état de cette dernière). La manière dont cette difficulté a été gérée est expliquée en détail dans le chapitre du fonctionnement du code.
+## Difficutlés anticipées
+Aux prémices du développement, les potentielles difficultés anticipées ont été de définir les fonctionnalités principales du projet afin d'avoir un outil capable de réagir à une grande variété de scénarios et de les implémenter de manière à en faire une base solide sur laquelle le projet peut reposer sans devoir constamment retravailler la base. Il s'agissait ici de prévoir des scénarios d'utilisation concrets afin d'orienter le projet et de définir quelles étaient les fonctionnalités essentielles.
 
 [^framework]: Voir glossaire
 [^phaser]: https://phaser.io/
