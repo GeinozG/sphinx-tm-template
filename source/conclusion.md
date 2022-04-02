@@ -11,3 +11,26 @@ Finalement, le projet a évolué sur une approche plus personnalisable et plus o
 A défaut d'avoir rencontré de nombreuses difficultés techniques, l'accroc principal a été la gestion du temps. En effet, l'estimation du temps pour l'ajout d'une fonctionnalité est très souvent largement inférieure à la réalité car de nombreux petits détails techniques n'apparaissent pas dans l'image globale qu'on s'imagine pour implémenter la fonctionnalité. De plus, programmer exige une grande concentration et d'être totalement impliqué afin d'être productif. Une certaine fatigue mentale survient donc rapidement et des pauses plus ou moins fréquentes sont nécessaires.
 
 Une autre difficulté majeure rencontrée a été la gestion des animations. En effet, il s'agissait de mettre de l'ordre dans la manière dont les animations sont jouées. Par exemple, si une animation est en train d'être jouée et que, par la continuité du code, une autre animation doit être jouée, il faut attendre que la première animation soit finie avant de jouer la deuxième. Mais peut-être que l'on souhaite que les deux animations se jouent simultanément ? Il fallait permettre au développeur d'expliciter parfaitement comment les animations doivent s'enchaîner afin de prévenir tout comportement indéterminé (le code qui joue les animations est asynchrone, une animation qui dépend d'une autre n'a donc aucune connaissance de l'état de cette dernière). Cette difficulté a été surmonté grâce au système d'animation, comme expliqué dans la partie "Fonctionnement de l’outil", notamment grâce au stockage de différents types d'animations dans une liste.
+
+## Scénarios pédagogiques
+L'outil est capable de s'adapter à de nombreux cas d'utilisation d'algorithmes sur une liste. Par exemple, des algorithmes simples comme sommer toutes les valeurs contenu dans une liste ou trouver un minimum ou des algorithmes plus complexes comme la recherche dichotomique.
+
+## Pistes d'amélioration
+Finalement, l'outil respecte plutôt bien la philosophie du constructivisme et les fonctionnalités de bases sont presques toutes implémentées. Cependant, tout n'a pas pu être implémenté en raison des difficultés évoquées. Il est donc évident que le projet n'a pas atteint son potentiel maximal et diverses pistes d'amélioration sont explorables afin d'étendre les fonctionnalités de l'outil et d'améliorer celles qui sont déjà présentes. Voici par exemple une liste non-exaustive des pistes d'amélioration possibles et les suggestions sur la manière de procéder pour les effectuer :
+
+### Variables spéciales
+La création de variables spéciales est un élément qui pourrait apporter une meilleure visualisation des fonctions qui accèdent à un élément de la liste. En effet, ces variables spéciales pourraient désigner une variable "de type indice", c'est à dire une variable dont le seul but est de servir d'indice pour accéder à un élément d'une liste. Ce type de variable pourrait être représenter d'une couleur différente ou en forme de flèche et pointerait constamment sur l'élément de la liste dont il est l'indice :
+
+```{figure} images/indice.png
+---
+---
+
+Exemple de ce à quoi pourrait ressembler une variable "indice".
+```
+
+Les "cartes" de la liste sont représentées en bleu, les variables "normales" sont en gris et la variable spéciale, ainsi que la carte qu'elle désigne sont en rouge. Ainsi, lors d'un accès à un élément de la liste par une variable spéciale, cette dernière pourrait se manifester (par surbrillance, ou par un déplacement) afin de montrer sa participation à l'opération en cours.
+
+créer des variables spéciales dont la valeur est un indice qui désigne une carte de la liste.
+
+
+### Visualisation des conditions
