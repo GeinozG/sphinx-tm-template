@@ -35,7 +35,7 @@ console.log("La somme est : " + somme);
 Dans cet algorithme certaines lignes peuvent faire appel à l'API afin d'animer l'exécution du programme et de mieux comprendre les opérations efféctuées : 
 * Ligne ```2``` : ```cards.appendList(liste)``` anime la création de la liste initiale.
 * Ligne ```5``` : ```vars.create("somme", 0)``` anime la création de la variable ```somme``` avec sa valeur de ```0```.
-* Ligne ```10``` : ```cards.add(i, "somme")``` ajoute la valeur de la carte à la position ```i``` à la valeur de la variable ```somme```.
+* Ligne ```10``` : ```vars.add("somme", i)``` ajoute la valeur de la carte à la position ```i``` à la valeur de la variable ```somme```.
 
 ### Trouver le minimum
 Cet algorithme simple à mettre en place, permet d'avoir un avant-goût du potentiel de l'outil. Sur une liste non-triée, voici à quoi ressemblerait un algorithme qui recherche la plus petite valeur dans une liste :

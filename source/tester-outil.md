@@ -133,3 +133,31 @@ Assigne une valeur à une variable.
 ```
 assign(name, value)
 ```
+
+### Add 
+Additione la valeur actuelle d'une variable à la valeur d'une carte
+
+```
+add(varName, cardIndex)
+```
+
+### Multiply 
+Multiplie la valeur actuelle d'une variable à la valeur d'une carte
+
+```
+multiply(varName, cardIndex)
+```
+
+### Substract 
+Soustrait la valeur actuelle d'une variable à la valeur d'une carte
+
+```
+substract(varName, cardIndex)
+```
+
+### Divide 
+Divise la valeur actuelle d'une variable par la valeur d'une carte
+
+```
+divide(varName, cardIndex)
+```
