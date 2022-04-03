@@ -94,7 +94,7 @@ class MainScene extends Phaser.Scene
 Fonctionnement du système d'événements de Phaser.
 ```
 
-Le système d'événements de Phaser joue un rôle crucial dans le projet. En effet, il permet la communication entre l'API et le programme en lui-même. Pour ce faire, il est nécessaire d'instancier un objet *EventEmitter*[^eventEmitter], proposé par Phaser. Cet objet permet d'émettre des événements et de les recevoir. C'est-à-dire qu'il est possible d'établir une connexion entre plusieurs fichiers ou parties de code différentes en émettant un événement contenant des paramètres qui seront transmis à une autre partie du code qui appellera une fonction en lui passant les paramètres spécifiés lors de l'envoi de l'événement. Cela revient en résumé à appeler une fonction qui est censée être hors de portée. Concrètement, le code se construit de la manière suivante :
+Le système d'événements de Phaser joue un rôle crucial dans le projet. En effet, il permet la communication entre l'API et le programme en lui-même. Pour ce faire, il est nécessaire d'instancier un objet *EventEmitter*[^eventEmitter], proposé par Phaser. Cet objet permet d'émettre des événements et de les recevoir. C'est-à-dire qu'il est possible d'établir une connexion entre plusieurs fichiers ou parties de code différentes en émettant un événement contenant des paramètres qui seront transmis à une autre partie du code qui appellera une fonction en lui passant les paramètres spécifiés lors de l'envoi de l'événement. Cela revient, en résumé, à appeler une fonction qui est censée être hors de portée. Concrètement, le code se construit de la manière suivante :
 
 Avant tout, il faut instancier l'objet *EventEmitter* :
 
@@ -127,16 +127,20 @@ class Cards
 Enfin, le code du programme s'occupe d'intercepter l'événement :
 
 ``` js
+// main.js
+
 class MainScene extends Phaser.Scene
 {
     create()
     {
+        // Reçoit l'événement.
         eventEmitter.on(
             "swapCard",     // Nom de l'événement.
             this.swapCard,  // Fonction à appeler.
         );
     }
 
+    // La fonction à appeler par l'événement.
     swapCard(index1, index2)
     {
         // ...
