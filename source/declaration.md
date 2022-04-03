@@ -22,9 +22,9 @@ interdisciplinaires centrés sur un projet/travaux personnels/travaux de maturit
 5. J’autorise la consultation de mon travail par des tierces personnes à des fins pédagogiques
 et/ou d’information interne à l’école :
 
-☑ oui
+[ ] oui
 
-❏ non (car il contient des données personnelles et sensibles.)
+[ ] non (car il contient des données personnelles et sensibles.)
 
 Lieu, date : Bulle, le 3 avril 2022
 
