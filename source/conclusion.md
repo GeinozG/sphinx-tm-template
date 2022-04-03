@@ -39,5 +39,5 @@ La visualisation des conditions n'est pas implémentée dans l'outil mais permet
 ---
 ---
 
-Exemple de ce à quoi pourrait ressembler une visualisation de condition.
+Visualisation d'une condition entre la carte ```1``` et ```2```.
 ```
