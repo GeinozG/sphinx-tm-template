@@ -30,7 +30,6 @@ Exemple de ce à quoi pourrait ressembler une variable "indice".
 
 Les "cartes" de la liste sont représentées en bleu, les variables "normales" sont en gris et la variable spéciale, ainsi que la carte qu'elle désigne sont en rouge. Ainsi, lors d'un accès à un élément de la liste par une variable spéciale, cette dernière pourrait se manifester (par surbrillance, ou par un déplacement) afin de montrer sa participation à l'opération en cours.
 
-créer des variables spéciales dont la valeur est un indice qui désigne une carte de la liste.
-
+Concrètement, pour implémenter cette fonctionnalité, il faudrait ajouter une nouvelle fonction dans l'API, par exemple ```vars.createIndex(name, indexValue)```. Le paramètre ```name``` correspond au nom de la variable et ```indexValue``` définit la valeur que contient la variable spéciale (l'indice d'une carte dans la liste). Ensuite, lors de l'appel de la fonction, il suffit de créer une variable similaire aux "normales" mais avec une image différente et leur ajouter un comportement qui modifie la couleur de la carte qu'elles pointent. Idéalement chaque instance de variables spéciales doit être de couleur différente afin d'avoir une vision claire de quelle variable spéciale pointe vers quelle carte. Enfin il suffit de créer une animation qui met simplement en évidence la variable spéciale, et d'exécuter l'animation à chaque fois que celle-ci intervient dans une opération.
 
 ### Visualisation des conditions
