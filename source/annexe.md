@@ -3,7 +3,7 @@
 ## Code source
 
 ### phaser.min.js
-Le fichier qui initialise *Phaser* dans le projet est beaucoup trop grand pour être inclu ici. Ce lien permet d'accéder au fichier en question depuis GitHub : "https://raw.githubusercontent.com/photonstorm/phaser/master/dist/phaser.min.js"
+Le fichier qui initialise *Phaser* dans le projet est beaucoup trop grand pour être inclus ici. Ce lien permet d'accéder au fichier en question depuis GitHub : "https://raw.githubusercontent.com/photonstorm/phaser/master/dist/phaser.min.js"
 
 ### eventEmitter.js
 ```js

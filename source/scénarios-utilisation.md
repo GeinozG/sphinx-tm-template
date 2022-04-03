@@ -32,13 +32,13 @@ for (let i = 0; i < liste.length; i++)
 console.log("La somme est : " + somme);
 ```
 
-Dans cet algorithme certaines lignes peuvent faire appel à l'API afin d'animer l'exécution du programme et de mieux comprendre les opérations efféctuées : 
+Dans cet algorithme certaines lignes peuvent faire appel à l'API afin d'animer l'exécution du programme et de mieux comprendre les opérations effectuées : 
 * Ligne ```2``` : ```cards.appendList(liste)``` anime la création de la liste initiale.
 * Ligne ```5``` : ```vars.create("somme", 0)``` anime la création de la variable ```somme``` avec sa valeur de ```0```.
 * Ligne ```10``` : ```vars.add("somme", i)``` ajoute la valeur de la carte à la position ```i``` à la valeur de la variable ```somme```.
 
 ### Trouver le minimum
-Cet algorithme simple à mettre en place, permet d'avoir un avant-goût du potentiel de l'outil. Sur une liste non-triée, voici à quoi ressemblerait un algorithme qui recherche la plus petite valeur dans une liste :
+Cet algorithme simple à mettre en place, permet d'avoir un avant-goût du potentiel de l'outil. Sur une liste non triée, voici à quoi ressemblerait un algorithme qui recherche la plus petite valeur dans une liste :
 
 ```{code-block} js
 ---
@@ -70,7 +70,7 @@ console.log("Le minimum est : " + minimum);
 * Ligne ```12``` : ```cards.read(i, "minimum")``` assigne la valeur de la carte à l'indice ```i``` à la variable ```minimum```.
 
 ### Recherche dichotomique
-La recherche dichotomique fait parti des algorithmes intéressants auxquels l'outil n'apporte pas encore de réels soutiens visuels qui pourraient aider à la compréhension, les fonctionnalités cruciales qu'il manquent à l'outil est la possibilité de créer des variables spéciales dont la valeur est un indice qui désigne une carte de la liste, et la visualisation des conditions :
+La recherche dichotomique fait partie des algorithmes intéressants auxquels l'outil n'apporte pas encore de réels soutiens visuels qui pourraient aider à la compréhension, les fonctionnalités cruciales qu'il manque à l'outil sont la possibilité de créer des variables spéciales dont la valeur est un indice qui désigne une carte de la liste, et la visualisation des conditions :
 
 ```{code-block} js
 ---
@@ -130,7 +130,7 @@ Aux lignes ```5```, ```8``` et ```11```, le mieux aurait été de pouvoir créer
 * Ligne ```8``` : ```vars.create("dernier", liste.length - 1)``` anime la création de la variable ```dernier```.
 * Ligne ```11``` : ```vars.create("milieu")``` anime la création de la variable ```milieu``` avec une valeur par défaut.
 * Ligne ```12``` : ```vars.create("element")``` anime la création de la variable ```element``` avec une valeur par défaut.
-* Ligne ```17``` : ```vars.assign("milieu", Math.floor((premier + dernier) / 2))``` anime l'assigniation de la valeur à la variable ```milieu```.
-* Ligne ```20``` : ```vars.assign("element", liste[milieu])``` anime l'assigniation de la valeur à la variable ```element```.
-* Ligne ```30``` : ```vars.assign("premier", milieu + 1)``` anime l'assigniation de la valeur à la variable ```premier```.
-* Ligne ```35``` : ```vars.assign("dernier", milieu - 1)``` anime l'assigniation de la valeur à la variable ```dernier```.
+* Ligne ```17``` : ```vars.assign("milieu", Math.floor((premier + dernier) / 2))``` anime l'assignation de la valeur à la variable ```milieu```.
+* Ligne ```20``` : ```vars.assign("element", liste[milieu])``` anime l'assignation de la valeur à la variable ```element```.
+* Ligne ```30``` : ```vars.assign("premier", milieu + 1)``` anime l'assignation de la valeur à la variable ```premier```.
+* Ligne ```35``` : ```vars.assign("dernier", milieu - 1)``` anime l'assignation de la valeur à la variable ```dernier```.

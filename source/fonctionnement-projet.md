@@ -2,10 +2,10 @@
 Le projet repose sur plusieurs grands aspects, qui permettent une répartition du code en différents systèmes.
 
 ## L'utilisation de Phaser
-Phaser[^phaser] se décrit comme un ***framework***[^framework] de création de jeux vidéo, il contient donc de nombreux utilitaires facilitant la gestion d'images, les déplacements et des effets en tous genres comme la distortion d'image ou des effets de transparence.
+Phaser[^phaser] se décrit comme un ***framework***[^framework] de création de jeux vidéo, il contient donc de nombreux utilitaires facilitant la gestion d'images, les déplacements et des effets en tous genres comme la distorsion d'image ou des effets de transparence.
 
 ### Système de scènes
-L'un des plus gros avantage qu'offre Phaser est qu'il repose sur un système de scènes, qui possèdent des méthodes spécifiques permettant par exemple de pré-charger des images par la méthode *preload()* ou une méthode *update()* appelée plusieurs fois par seconde permettant d'actualiser des valeurs (très utile pour le système d'animations).
+L'un des plus gros avantages qu'offre Phaser est qu'il repose sur un système de scènes, qui possèdent des méthodes spécifiques permettant par exemple de précharger des images par la méthode *preload()* ou une méthode *update()* appelée plusieurs fois par seconde permettant d'actualiser des valeurs (très utile pour le système d'animation).
 
 Afin de définir une scène, il faut créer une classe héritant de la scène de base de Phaser et d'implémenter ses méthodes :
 
@@ -371,7 +371,7 @@ Le *framework* Phaser permet de déplacer ses objets par un procédé qui s'appe
     });
 ```
 
-Cependant, ce principe ne respecte pas le fondement du système d'animation développé précédemment, qui consiste à stocker dans une liste toutes les animations créées, afin de pouvoir les jouer dans un ordre défini, simultanément ou non. En effet, le *tweening* proposé par Phaser déclenche une animation au moment-même où le *tweening* est créé, ou éventuellement avec un délai mesuré en microsecondes. Par conséquent, il est préférable que les déplacements des cartes ne relèvent pas de la responsabilité de Phaser.
+Cependant, ce principe ne respecte pas le fondement du système d'animation développé précédemment, qui consiste à stocker dans une liste toutes les animations créées, afin de pouvoir les jouer dans un ordre défini, simultanément ou non. En effet, le *tweening* proposé par Phaser déclenche une animation au moment même où le *tweening* est créé, ou éventuellement avec un délai mesuré en microsecondes. Par conséquent, il est préférable que les déplacements des cartes ne relèvent pas de la responsabilité de Phaser.
 
 Il est donc nécessaire que le programme gère ce type d'animation lui-même. Pour cela, l'objet *animation* de type *movement* doit faire appel à des notions de trigonométrie élémentaires afin de calculer l'angle en radians entre le point de départ et le point d'arrivée du déplacement :
 

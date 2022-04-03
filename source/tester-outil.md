@@ -5,9 +5,9 @@ Afin de tester l'outil, il faut au préalable préparer son environnement :
 Premièrement, il faut se procurer le code du projet. Pour cela, télécharger le dépôt suivant : ```https://github.com/GeinozG/TM-2021```.
 
 ## Ouvrir un serveur HTTP local
-Il faut à présent configurer un *serveur http* local. Plusieurs manières d'ouvrir un serveur sont possibles mais la plus simple est probablement en utilisant Python. Après avoir téléchargé une version récente de Python, il suffit d'ouvrir un invite de commandes dans le dossier du dépôt GitHub précédemment téléchargé et d'entrer la commande suivante : ```python -m http.server 8000```. Il ne reste plus qu'à ouvrir un navigateur Web et d'entrer l'adresse suivante : ```http://localhost:8000```. 
+Il faut à présent configurer un *serveur http* local. Plusieurs manières d'ouvrir un serveur sont possibles mais la plus simple est probablement en utilisant Python. Après avoir téléchargé une version récente de Python, il suffit d'ouvrir une invite de commande dans le dossier du dépôt GitHub précédemment téléchargé et d'entrer la commande suivante : ```python -m http.server 8000```. Il ne reste plus qu'à ouvrir un navigateur Web et d'entrer l'adresse suivante : ```http://localhost:8000```. 
 
-Une zone noire doit normalement être visible sur l'écran. Afin de créer des cartes ou des variables, il faut ouvrir le terminal d'outil de développement (en appuyant sur F12). Depuis cette fenêtre, allez sur l'onglet console et entrez ces commandes afin d'initialiser l'API :
+Une zone noire doit normalement être visible sur l'écran. Afin de créer des cartes ou des variables, il faut ouvrir le terminal d'outil de développement (en appuyant sur F12). Depuis cette fenêtre, allez sur l'onglet *console* et entrez ces commandes afin d'initialiser l'API :
 ```
 const cards = new Cards();
 
