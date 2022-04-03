@@ -33,3 +33,11 @@ Les "cartes" de la liste sont représentées en bleu, les variables "normales" s
 Concrètement, pour implémenter cette fonctionnalité, il faudrait ajouter une nouvelle fonction dans l'API, par exemple ```vars.createIndex(name, indexValue)```. Le paramètre ```name``` correspond au nom de la variable et ```indexValue``` définit la valeur que contient la variable spéciale (l'indice d'une carte dans la liste). Ensuite, lors de l'appel de la fonction, il suffit de créer une variable similaire aux "normales" mais avec une image différente et leur ajouter un comportement qui modifie la couleur de la carte qu'elles pointent. Idéalement chaque instance de variables spéciales doit être de couleur différente afin d'avoir une vision claire de quelle variable spéciale pointe vers quelle carte. Enfin il suffit de créer une animation qui met simplement en évidence la variable spéciale, et d'exécuter l'animation à chaque fois que celle-ci intervient dans une opération.
 
 ### Visualisation des conditions
+La visualisation des conditions n'est pas implémentée dans l'outil mais permettrait de faciliter la compréhension d'un algorithme.
+
+```{figure} images/condition.png
+---
+---
+
+Exemple de ce à quoi pourrait ressembler une visualisation de condition.
+```
