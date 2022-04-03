@@ -309,6 +309,8 @@ update() // Exécutée 60 fois par seconde par Phaser.
 
 Bien que l'emploi du *switch* soit pratique pour identifier le type d'animation, il ne peut pas être utilisé dans le cas présent car l'instruction ```break;``` du type *break* doit mettre fin à la *boucle for* et non à l'instruction *switch*.
 
+Toutefois, il est parfois nécessaire d'effectuer des opérations au moment exact où une animation prend fin. Par exemple, lorsque l'animation d'assignation d'une valeur à une variable est terminée, il faut modifier la valeur que contient la variable en question, en accord avec la valeur qui lui a été assignée pendant l'animation. Evidemment, on ne peut pas modifier sa valeur au début ou pendant l'animation, car l'animation perdrait tout son intérêt. C'est pourquoi les animations de type *break* possèdent un attribut ```.callback```[^callback] qui permet de stocker une fonction dans l'attribut et de l'appeler plus tard comme une fonction normale : ```.callback(arguments)```.
+
 ### Déplacement des cartes
 Le *framework* Phaser permet de déplacer ses objets par un procédé qui s'appelle le *tweening*[^tweening]. Ce procédé permet en effet de déplacer un objet d'un point A à un point B automatiquement et fluidement. Appliquer du tweening sur une carte exécute un code asynchrone modifiant les propriétés *x* et *y* de la carte concernée afin de la faire se diriger vers le point souhaité :
 
@@ -333,7 +335,7 @@ Le *framework* Phaser permet de déplacer ses objets par un procédé qui s'appe
     });
 ```
 
-Cependant, ce principe ne respecte pas le fondement du système d'animation développé précédemment, qui consiste à stocker dans une liste toutes les animations créées, afin de pouvoir les jouer dans un ordre défini, simultanément ou non. En effet, le *tweening* proposé par Phaser déclenche une animation au moment-même où le *tweening* est créé, ou éventuellement avec un délai mesuré en microsecondes. De plus, le système de *callback*[^callback] (appel d'une fonction à la fin de l'animation) rajoute une complexité supplémentaire dans la gestion des animations. Par conséquent, il est préférable que les déplacements des cartes ne relèvent pas de la responsabilité de Phaser.
+Cependant, ce principe ne respecte pas le fondement du système d'animation développé précédemment, qui consiste à stocker dans une liste toutes les animations créées, afin de pouvoir les jouer dans un ordre défini, simultanément ou non. En effet, le *tweening* proposé par Phaser déclenche une animation au moment-même où le *tweening* est créé, ou éventuellement avec un délai mesuré en microsecondes. De plus, le système de *callback* (appel d'une fonction à la fin de l'animation) rajoute une complexité supplémentaire dans la gestion des animations. Par conséquent, il est préférable que les déplacements des cartes ne relèvent pas de la responsabilité de Phaser.
 
 Il est donc nécessaire que le programme gère ce type d'animation lui-même. Pour cela, l'objet *animation* de type *movement* doit faire appel à des notions de trigonométrie élémentaires afin de calculer l'angle en radians entre le point de départ et le point d'arrivée du déplacement :
 
