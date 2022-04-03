@@ -309,7 +309,43 @@ update() // Exécutée 60 fois par seconde par Phaser.
 
 Bien que l'emploi du *switch* soit pratique pour identifier le type d'animation, il ne peut pas être utilisé dans le cas présent car l'instruction ```break;``` du type *break* doit mettre fin à la *boucle for* et non à l'instruction *switch*.
 
-Toutefois, il est parfois nécessaire d'effectuer des opérations au moment exact où une animation prend fin. Par exemple, lorsque l'animation d'assignation d'une valeur à une variable est terminée, il faut modifier la valeur que contient la variable en question, en accord avec la valeur qui lui a été assignée pendant l'animation. Evidemment, on ne peut pas modifier sa valeur au début ou pendant l'animation, car l'animation perdrait tout son intérêt. C'est pourquoi les animations de type *break* possèdent un attribut ```.callback```[^callback] qui permet de stocker une fonction dans l'attribut et de l'appeler plus tard comme une fonction normale : ```.callback(arguments)```.
+Toutefois, il est parfois nécessaire d'effectuer des opérations au moment exact où une animation prend fin. Par exemple, lorsque l'animation d'assignation d'une valeur à une variable est terminée, il faut modifier la valeur que contient la variable en question, en accord avec la valeur qui lui a été assignée pendant l'animation. Evidemment, on ne peut pas modifier sa valeur au début ou pendant l'animation, car l'animation perdrait tout son intérêt. C'est pourquoi les animations de type *break* possèdent un attribut ```.callback```[^callback] qui permet de stocker une fonction dans l'attribut et de l'appeler plus tard comme une fonction normale : ```.callback(arguments)```. Ainsi, il suffit de vérifier si une fonction *callback* est stockée dans les animations de type *break* et d'appeler la fonction stockée le cas échéant :
+
+```{code-block} js
+---
+emphasize-lines: 18 - 22
+---
+update() // Exécutée 60 fois par seconde par Phaser.
+{
+    // Parcours les animations de la liste (animationQueue).
+    for (let i = 0; i < animationQueue.length; i++)
+    {
+        // Stocke l'animation courante de la liste.
+        const currentAnimation = animationQueue[i];
+        
+        // Identifie le type de l'animation.
+        if (currentAnimation.type == "break")
+        {
+            // Si le type break est le premier élément de la liste.
+            if (i == 0)
+            {
+                // Retire le premier élément de la liste.
+                animationQueue.shift();
+
+                if (currentAnimation.callback != null)
+                {
+                    // Exécute la fonction callback.
+                    currentAnimation.callback();
+                }
+            }
+
+            // Met fin à l'exécution de la boucle for.
+            break;
+        }
+    }
+}
+```
+
 
 ### Déplacement des cartes
 Le *framework* Phaser permet de déplacer ses objets par un procédé qui s'appelle le *tweening*[^tweening]. Ce procédé permet en effet de déplacer un objet d'un point A à un point B automatiquement et fluidement. Appliquer du tweening sur une carte exécute un code asynchrone modifiant les propriétés *x* et *y* de la carte concernée afin de la faire se diriger vers le point souhaité :
