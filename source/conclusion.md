@@ -41,3 +41,7 @@ La visualisation des conditions n'est pas implémentée dans l'outil mais permet
 
 Visualisation d'une condition entre la carte ```1``` et ```2```.
 ```
+
+L'implémentation de cette fonctionnalité nécessiterait de créer une nouvelle animation spécifique qui pourrait être appelée par l'API de cette façon : ```cards.compare(index1, index2, comparisonOperator)```. ```index1``` serait l'indice correspondant à la première carte à comparer, ```index2``` serait l'indice de la deuxième carte à comparer et ```comparisonOperator``` serait l'opérateur de comparaison entre les deux valeurs, par exemple : ```==```, ```!=```, ```<```, ```>```, etc...
+
+Quant au développement de l'animation en elle-même, il faudrait la découper en plusieurs séquences isolées et le enchaîner afin de créer une animation fluide. Par exemple, les deux premières cartes pourraient s'élevées simultanément afin de repérer quelles sont les cartes qui vont être comparées, puis les retourner en même temps afin de voir leur valeur, suivi de l'apparition de l'opérateur de comparaison entre les cartes et du résultat de la comparaison en dernier temps. Enfin il suffit faire disparaître l'opérateur et le résultat, de retourner à nouveau les cartes et de les replacer dans la liste. Chaque étape doit évidemment être isolée dans la liste d'animations afin que tout ne se joue pas en même temps.
