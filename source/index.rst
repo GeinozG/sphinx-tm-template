@@ -19,3 +19,4 @@ Visualisation interactive des opérations et algorithmes sur les listes à l’a
     tester-outil.md
     glossaire.md
     annexe.md
+    declaration.md
