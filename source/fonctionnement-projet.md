@@ -371,7 +371,7 @@ Le *framework* Phaser permet de déplacer ses objets par un procédé qui s'appe
     });
 ```
 
-Cependant, ce principe ne respecte pas le fondement du système d'animation développé précédemment, qui consiste à stocker dans une liste toutes les animations créées, afin de pouvoir les jouer dans un ordre défini, simultanément ou non. En effet, le *tweening* proposé par Phaser déclenche une animation au moment-même où le *tweening* est créé, ou éventuellement avec un délai mesuré en microsecondes. De plus, le système de *callback* (appel d'une fonction à la fin de l'animation) rajoute une complexité supplémentaire dans la gestion des animations. Par conséquent, il est préférable que les déplacements des cartes ne relèvent pas de la responsabilité de Phaser.
+Cependant, ce principe ne respecte pas le fondement du système d'animation développé précédemment, qui consiste à stocker dans une liste toutes les animations créées, afin de pouvoir les jouer dans un ordre défini, simultanément ou non. En effet, le *tweening* proposé par Phaser déclenche une animation au moment-même où le *tweening* est créé, ou éventuellement avec un délai mesuré en microsecondes. Par conséquent, il est préférable que les déplacements des cartes ne relèvent pas de la responsabilité de Phaser.
 
 Il est donc nécessaire que le programme gère ce type d'animation lui-même. Pour cela, l'objet *animation* de type *movement* doit faire appel à des notions de trigonométrie élémentaires afin de calculer l'angle en radians entre le point de départ et le point d'arrivée du déplacement :
 
