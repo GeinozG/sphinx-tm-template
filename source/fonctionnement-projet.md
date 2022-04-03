@@ -87,7 +87,7 @@ class MainScene extends Phaser.Scene
 ```
 
 ### Système d'événements
-```{figure} images/event.png
+```{figure} images/event.jpg
 ---
 ---
 
