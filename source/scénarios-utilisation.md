@@ -32,7 +32,7 @@ for (let i = 0; i < liste.length; i++)
 console.log("La somme est : " + somme);
 ```
 
-Dans cet algorithme certaines lignes peuvent faire appel à l'API afin d'animer l'exécution du programme et de mieux comprendre les opérations effectuées : 
+Dans cet algorithme certaines lignes peuvent faire appel à l'API afin d'animer l'exécution du programme et permettre à l'apprenant de mieux comprendre les opérations effectuées : 
 * Ligne ```2``` : ```cards.appendList(liste)``` anime la création de la liste initiale.
 * Ligne ```5``` : ```vars.create("somme", 0)``` anime la création de la variable ```somme``` avec sa valeur de ```0```.
 * Ligne ```10``` : ```vars.add("somme", i)``` ajoute la valeur de la carte à la position ```i``` à la valeur de la variable ```somme```.
@@ -124,7 +124,7 @@ console.log(recherche([1, 2, 3, 4, 5, 6, 7, 8, 9], 5));  // 4
 console.log(recherche([1, 2, 3, 4, 5, 6, 7, 8, 9], 10)); // -1
 ```
 
-Aux lignes ```5```, ```8``` et ```11```, le mieux aurait été de pouvoir créer des variables spéciales de type "indice" qui montre visuellement à quelles cartes elles font référence dans la liste. De plus, aux lignes ```14```, ```22``` et ```27```, l'animation des conditions ne figurent pas encore comme fonctionnalités de l'outil :
+Aux lignes ```5```, ```8``` et ```11```, le mieux aurait été de pouvoir créer des variables spéciales de type "indice" qui montrent visuellement la carte à laquelle elles font référence dans la liste. De plus, aux lignes ```14```, ```22``` et ```27```, l'animation des conditions ne figurent pas encore comme fonctionnalités de l'outil :
 
 * Ligne ```5``` : ```vars.create("premier", 0)``` anime la création de la variable ```premier```.
 * Ligne ```8``` : ```vars.create("dernier", liste.length - 1)``` anime la création de la variable ```dernier```.

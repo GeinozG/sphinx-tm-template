@@ -20,7 +20,7 @@ const vars = new Variables();
 Pour utiliser ces fonctions, il suffit d'écrire ```cards.``` suivit du nom de la fonction et de ses paramètres.
 
 ### Append
-Ajoute un certain nombre de cartes avec des valeurs similaire à la fin de la liste.
+Ajoute un certain nombre entier de cartes avec des valeurs similaire à la fin de la liste.
 
 ```
 append(value = 0, nbCards = 1)

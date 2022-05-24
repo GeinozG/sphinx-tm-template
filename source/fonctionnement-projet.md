@@ -2,7 +2,7 @@
 Le projet repose sur plusieurs grands aspects, qui permettent une répartition du code en différents systèmes.
 
 ## L'utilisation de Phaser
-Phaser[^phaser] se décrit comme un ***framework***[^framework] de création de jeux vidéo, il contient donc de nombreux utilitaires facilitant la gestion d'images, les déplacements et des effets en tous genres comme la distorsion d'image ou des effets de transparence.
+Phaser[^phaser] se décrit comme un ***framework***[^framework] de création de jeux vidéo. Il contient donc de nombreux utilitaires facilitant la gestion d'images, les déplacements et des effets en tous genres comme la distorsion d'image ou des effets de transparence.
 
 ### Système de scènes
 L'un des plus gros avantages qu'offre Phaser est qu'il repose sur un système de scènes, qui possèdent des méthodes spécifiques permettant par exemple de précharger des images par la méthode *preload()* ou une méthode *update()* appelée plusieurs fois par seconde permettant d'actualiser des valeurs (très utile pour le système d'animation).
@@ -32,7 +32,7 @@ class MainScene extends Phaser.Scene
         // ...
     }
 
-    // Appelée à interval régulier
+    // Appelée à intervalles réguliers
     // pour actualiser des valeurs.
     update()
     {
@@ -41,7 +41,7 @@ class MainScene extends Phaser.Scene
 }
 ```
 
-Pour instancier la scène, il suffit simplement de créer une variable de configuration afin de définir la taille du ***canvas***[^canvas] utilisé pour dessiner les images, le nombre d'actualisation par seconde de la fonction *update()* ainsi que le nom de la classe de la scène principale, et d'instancier une classe *Phaser.Game* :
+Pour instancier la scène, il suffit simplement de créer une variable de configuration, afin de définir la taille du ***canvas***[^canvas] utilisé pour dessiner les images, le nombre d'actualisations par seconde de la fonction *update()*, ainsi que le nom de la classe de la scène principale, et d'instancier une classe *Phaser.Game* :
 
 ``` js
 const config = {
@@ -66,7 +66,7 @@ const game = new Phaser.Game(config);
 ```
 
 ### Système de gestion des cartes
-Les scènes de Phaser permettent la création d'objets divers, comme des images, du texte, ou autre, à affichés à l'écran. Les cartes et les variables sont en fait des objets images dont les coordonnées varient afin de les faire se déplacer :
+Les scènes de Phaser permettent la création d'objets divers, comme des images, du texte, ou autre, à afficher à l'écran. Les cartes et les variables sont en fait des objets images dont les coordonnées varient afin de les faire se déplacer :
 
 ``` js
 class MainScene extends Phaser.Scene
@@ -317,7 +317,7 @@ emphasize-lines: 18 - 22
 ---
 update() // Exécutée 60 fois par seconde par Phaser.
 {
-    // Parcours les animations de la liste (animationQueue).
+    // Parcourt les animations de la liste (animationQueue).
     for (let i = 0; i < animationQueue.length; i++)
     {
         // Stocke l'animation courante de la liste.
@@ -366,7 +366,7 @@ Le *framework* Phaser permet de déplacer ses objets par un procédé qui s'appe
         // Type d'accélération.
         ease: 'Power1',
 
-        // Fonction appelé à la fin de l'animation
+        // Fonction appelée à la fin de l'animation
         onComplete: function() {...}
     });
 ```
@@ -412,7 +412,7 @@ const animation = {
                                (animation.x - card.futureX));
 ```
 
-Comme l'angle de la direction dans laquelle la carte doit se déplacer n'est calculé qu'une seule fois au moment de la création de l'animation, la fonction *update()* de Phaser n'a plus qu'à actualiser les coordonnées de la carte en tenant compte de l'angle. Les fonctions trigonométriques Sinus/Cosinus de l'angle permettent d'obtenir le décalage horizontal et vertical approprié :
+Comme l'angle de la direction dans laquelle la carte doit se déplacer n'est calculé qu'une seule fois au moment de la création de l'animation, la fonction *update()* de Phaser n'a plus qu'à actualiser les coordonnées de la carte en tenant compte de l'angle. Les fonctions trigonométriques sinus et cosinus de l'angle permettent d'obtenir le décalage horizontal et vertical approprié :
 
 ```{code-block} js
 ---
